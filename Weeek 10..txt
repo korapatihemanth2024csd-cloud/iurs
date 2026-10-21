@@ -1,0 +1,1006 @@
+Week 10 
+Cod-1 employee directory
+src/App.js
+import React from 'react';
+import './App.css';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      query: '',
+      employees: [
+        'John Doe',
+        'Jane Smith',
+        'Mike Johnson',
+        'Emily Davis',
+        'James Brown',
+        'Jennifer Wilson',
+        'Paul Garcia',
+        'Laura Martinez'
+      ],
+      filteredEmployees: [
+        'John Doe',
+        'Jane Smith',
+        'Mike Johnson',
+        'Emily Davis',
+        'James Brown',
+        'Jennifer Wilson',
+        'Paul Garcia',
+        'Laura Martinez'
+      ]
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.query !== this.state.query) {
+      this.filterEmployees();
+    }
+  }
+
+  handleSearch = (event) => {
+    this.setState({
+      query: event.target.value
+    });
+  };
+
+  filterEmployees = () => {
+    const filteredEmployees = this.state.employees.filter((employee) =>
+      employee.toLowerCase().includes(this.state.query.toLowerCase())
+    );
+
+    if (
+      JSON.stringify(filteredEmployees) !==
+      JSON.stringify(this.state.filteredEmployees)
+    ) {
+      this.setState({
+        filteredEmployees: filteredEmployees
+      });
+    }
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Employee Directory</h1>
+
+        <input
+          type="text"
+          placeholder="Search employees..."
+          value={this.state.query}
+          onChange={this.handleSearch}
+        />
+
+        <div className="employee-list">
+          {this.state.filteredEmployees.map((employee, index) => (
+            <div className="employee" key={index}>
+              {employee}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
+=========================================================================
+src/App.css
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-top: 15px;
+}
+
+.App h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 32px;
+}
+
+.App input {
+  width: 325px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 12px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.App input:focus {
+  border-color: #66afe9;
+}
+
+.employee-list {
+  width: 310px;
+  margin: 16px auto 0;
+}
+
+.employee {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  height: 32px;
+  line-height: 32px;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+}
+===========================================================
+src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+===========================================================
+src/index.css
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+===================================================================
+2.cod stopwatch using react 
+src/components/Stopwatch.jsx
+
+import React from 'react';
+
+class Stopwatch extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      time: 0,
+      running: false,
+      laps: []
+    };
+
+    this.timer = null;
+    this.startTime = 0;
+    this.elapsedBeforeStart = 0;
+  }
+
+  componentDidMount() {
+    this.timer = null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.running && this.state.running) {
+      this.startTimer();
+    }
+
+    if (prevState.running && !this.state.running) {
+      this.stopTimer();
+    }
+  }
+
+  componentWillUnmount() {
+    this.stopTimer();
+  }
+
+  startTimer = () => {
+    this.startTime = Date.now() - this.elapsedBeforeStart;
+
+    this.timer = setInterval(() => {
+      this.setState({
+        time: Date.now() - this.startTime
+      });
+    }, 10);
+  };
+
+  stopTimer = () => {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+
+    this.elapsedBeforeStart = this.state.time;
+  };
+
+  start = () => {
+    if (!this.state.running) {
+      this.setState({
+        running: true
+      });
+    }
+  };
+
+  stop = () => {
+    if (this.state.running) {
+      const currentTime = this.state.time;
+
+      this.setState({
+        running: false,
+        laps: [...this.state.laps, currentTime]
+      });
+    }
+  };
+
+  reset = () => {
+    this.stopTimer();
+
+    this.setState({
+      time: 0,
+      running: false,
+      laps: []
+    });
+
+    this.startTime = 0;
+    this.elapsedBeforeStart = 0;
+  };
+
+  addLap = () => {
+    if (this.state.running) {
+      this.setState({
+        laps: [...this.state.laps, this.state.time]
+      });
+    }
+  };
+
+  formatTime = (milliseconds) => {
+    const minutes = Math.floor(milliseconds / 60000);
+    const seconds = Math.floor((milliseconds % 60000) / 1000);
+    const centiseconds = Math.floor((milliseconds % 1000) / 10);
+
+    return (
+      String(minutes).padStart(2, '0') +
+      ':' +
+      String(seconds).padStart(2, '0') +
+      '.' +
+      String(centiseconds).padStart(2, '0')
+    );
+  };
+
+  render() {
+    const { time, running, laps } = this.state;
+
+    return (
+      <div className="stopwatch">
+        <h2>Stopwatch</h2>
+
+        <div className="time">
+          {this.formatTime(time)}
+        </div>
+
+        <div className="buttons">
+          <button
+            className="start-btn"
+            onClick={this.start}
+            disabled={running}
+          >
+            Start
+          </button>
+
+          <button
+            className="stop-btn"
+            onClick={this.stop}
+            disabled={!running}
+          >
+            Stop
+          </button>
+
+          <button
+            className="reset-btn"
+            onClick={this.reset}
+            disabled={running}
+          >
+            Reset
+          </button>
+        </div>
+
+        <button
+          className="lap-btn"
+          onClick={this.addLap}
+          disabled={!running}
+        >
+          Add Lap
+        </button>
+
+        <div className="laps">
+          {laps.map((lap, index) => (
+            <div className="lap" key={index}>
+              {this.formatTime(lap)}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Stopwatch;
+====================================================
+src/App.js
+import React from 'react';
+import Stopwatch from './components/Stopwatch';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <Stopwatch />
+    </div>
+  );
+}
+
+export default App;
+========================================================
+src/App.css
+.App {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 110px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.stopwatch {
+  width: 205px;
+  min-height: 150px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  background-color: #fff;
+  text-align: center;
+  padding: 18px 15px 15px;
+  box-sizing: border-box;
+}
+
+.stopwatch h2 {
+  font-size: 13px;
+  margin: 5px 0 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.time {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+
+button {
+  border: none;
+  border-radius: 2px;
+  color: white;
+  font-size: 9px;
+  padding: 5px 11px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.start-btn {
+  background-color: #28a745;
+}
+
+.stop-btn {
+  background-color: #dc3545;
+}
+
+.reset-btn {
+  background-color: #17a2b8;
+}
+
+.lap-btn {
+  background-color: #ffc107;
+  color: #222;
+  margin-top: 7px;
+}
+
+.laps {
+  margin-top: 7px;
+}
+
+.lap {
+  font-size: 9px;
+  color: #777;
+  margin-top: 3px;
+}
+==================================================
+src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+===================================================
+src/index.css
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+=====================================================
+cy crop mangement
+src/Components/CropDashboard.jsx
+import React, { useState } from 'react';
+import CropList from './CropList';
+
+function CropDashboard({ initialCrops }) {
+  const [crops] = useState(initialCrops);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredCrops = crops.filter((crop) =>
+    crop.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="dashboard">
+      <h1>CROP MANAGEMENT SYSTEM</h1>
+
+      <label htmlFor="cropSearch">Search by Crop Name:</label>
+
+      <input
+        id="cropSearch"
+        type="text"
+        placeholder="Search crops..."
+        value={searchTerm}
+        onChange={(event) => setSearchTerm(event.target.value)}
+      />
+
+      <CropList crops={filteredCrops} />
+    </div>
+  );
+}
+
+export default CropDashboard;
+===========================================================
+src/Components/CropList.jsx
+import React from 'react';
+
+function CropList({ crops }) {
+  return (
+    <div className="crop-list">
+      {crops.map((crop, index) => (
+        <div className="crop-item" key={index}>
+          <strong>{crop.name}</strong>
+          <span>- Type: {crop.type} - Status: {crop.status}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default CropList;
+========================================================
+src/App.js
+import React from 'react';
+import CropDashboard from './Components/CropDashboard';
+import './App.css';
+
+function App() {
+  const initialCrops = [
+    { name: 'Tomato', type: 'Vegetables', status: 'Growing' },
+    { name: 'Apple', type: 'Fruits', status: 'Planted' },
+    { name: 'Wheat', type: 'Grains', status: 'Harvested' },
+    { name: 'Carrot', type: 'Vegetables', status: 'Growing' },
+    { name: 'Banana', type: 'Fruits', status: 'Growing' }
+  ];
+
+  return <CropDashboard initialCrops={initialCrops} />;
+}
+
+export default App;
+========================================================
+src/App.css
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f4f7;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.dashboard {
+  width: 394px;
+  margin: 45px auto;
+  padding: 38px 24px 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.dashboard h1 {
+  margin: 0 0 25px;
+  padding-bottom: 7px;
+  border-bottom: 3px solid #2ecc71;
+  color: #30465b;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.dashboard label {
+  display: block;
+  margin-bottom: 6px;
+  color: #30465b;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.dashboard input {
+  width: 100%;
+  height: 31px;
+  padding: 6px 9px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 11px;
+  font-style: italic;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.dashboard input:focus {
+  border-color: #2ecc71;
+}
+
+.crop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.crop-item {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+  background: #f7f7f7;
+  border-left: 3px solid #2ecc71;
+  border-radius: 6px;
+  color: #222;
+  font-size: 11px;
+}
+
+.crop-item strong {
+  color: #30465b;
+  font-size: 11px;
+}
+
+.crop-item span {
+  text-align: right;
+}
+=======================================================
+src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+==========================================================
+src/index.css
+body {
+  margin: 0;
+}
+=======================================================
+pah employee directory with react
+1. src/App.js
+import React, { Component } from 'react';
+import './App.css';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: [
+        { id: 1, title: 'Complete React Assignment', priority: 'High', completed: false, createdAt: Date.now() },
+        { id: 2, title: 'Review Bootstrap Documentation', priority: 'Medium', completed: true, createdAt: Date.now() },
+        { id: 3, title: 'Debug Lifecycle Methods', priority: 'High', completed: false, createdAt: Date.now() },
+        { id: 4, title: 'Setup React Dev Tools', priority: 'Low', completed: false, createdAt: Date.now() }
+      ],
+      filter: 'All',
+      isLoading: true,
+      mountTime: null,
+      showModal: false,
+      newTaskTitle: '',
+      newTaskPriority: 'High'
+    };
+
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleTaskToggle = this.handleTaskToggle.bind(this);
+    this.handleAddTask = this.handleAddTask.bind(this);
+    this.handleDeleteTask = this.handleDeleteTask.bind(this);
+    this.handleShowModal = this.handleShowModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleNewTaskTitleChange = this.handleNewTaskTitleChange.bind(this);
+    this.handleNewTaskPriorityChange = this.handleNewTaskPriorityChange.bind(this);
+    this.handleSubmitNewTask = this.handleSubmitNewTask.bind(this);
+  }
+
+  componentDidMount() {
+    const mountTime = Date.now();
+    this.setState({ mountTime });
+    console.log('Component mounted at:', mountTime);
+
+    this.loadingTimer = setTimeout(() => {
+      this.setState({ isLoading: false });
+      console.log('Simulated API call complete');
+    }, 1500);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.filter !== this.state.filter) {
+      console.log('Filter changed from', prevState.filter, 'to', this.state.filter);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.loadingTimer) {
+      clearTimeout(this.loadingTimer);
+    }
+    console.log('Component unmounted at:', Date.now());
+  }
+
+  handleFilterChange(filterType) {
+    this.setState({ filter: filterType });
+  }
+
+  handleTaskToggle(taskId) {
+    this.setState(prevState => ({
+      tasks: prevState.tasks.map(task =>
+        task.id === taskId ? { ...task, completed: !task.completed } : task
+      )
+    }));
+  }
+
+  handleAddTask(taskData) {
+    const newTask = {
+      id: Date.now(),
+      title: taskData.title,
+      priority: taskData.priority,
+      completed: false,
+      createdAt: Date.now()
+    };
+    this.setState(prevState => ({
+      tasks: [...prevState.tasks, newTask]
+    }));
+  }
+
+  handleDeleteTask(taskId) {
+    this.setState(prevState => ({
+      tasks: prevState.tasks.filter(task => task.id !== taskId)
+    }));
+  }
+
+  handleShowModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false, newTaskTitle: '', newTaskPriority: 'High' });
+  }
+
+  handleNewTaskTitleChange(e) {
+    this.setState({ newTaskTitle: e.target.value });
+  }
+
+  handleNewTaskPriorityChange(e) {
+    this.setState({ newTaskPriority: e.target.value });
+  }
+
+  handleSubmitNewTask(e) {
+    e.preventDefault();
+    if (this.state.newTaskTitle.trim() === '') {
+      return;
+    }
+    this.handleAddTask({
+      title: this.state.newTaskTitle,
+      priority: this.state.newTaskPriority
+    });
+    this.handleCloseModal();
+  }
+
+  getFilteredTasks() {
+    const { tasks, filter } = this.state;
+    if (filter === 'All') {
+      return tasks;
+    }
+    if (filter === 'Completed') {
+      return tasks.filter(task => task.completed);
+    }
+    return tasks.filter(task => task.priority === filter);
+  }
+
+  getBadgeClass(priority) {
+    if (priority === 'High') {
+      return 'bg-primary';
+    }
+    if (priority === 'Medium') {
+      return 'bg-warning text-dark';
+    }
+    return 'bg-secondary';
+  }
+
+  render() {
+    const { isLoading, filter, showModal, newTaskTitle, newTaskPriority } = this.state;
+    const filteredTasks = this.getFilteredTasks();
+    const filters = ['All', 'High', 'Medium', 'Low', 'Completed'];
+
+    return (
+      <div className="App">
+        <nav className="navbar navbar-dark bg-dark px-3">
+          <span className="navbar-brand mb-0 h1">Task Manager</span>
+          <button className="btn btn-primary" onClick={this.handleShowModal}>
+            Add New Task
+          </button>
+        </nav>
+
+        <div className="container mt-3">
+          <div className="btn-group mb-3" role="group">
+            {filters.map(f => (
+              <button
+                key={f}
+                type="button"
+                className={`btn ${filter === f ? 'btn-primary' : 'btn-outline-primary'}`}
+                onClick={() => this.handleFilterChange(f)}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+
+          {isLoading && (
+            <div className="d-flex justify-content-center mt-5 mb-3">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          )}
+
+          <div className="row">
+            {filteredTasks.length === 0 ? (
+              <div className="col-12">
+                <div className="alert alert-info" role="alert">
+                  No tasks found for this filter.
+                </div>
+              </div>
+            ) : (
+              filteredTasks.map(task => (
+                <div className="col-md-6 mb-3" key={task.id}>
+                  <div className={`card ${task.completed ? 'bg-light border-success' : ''}`}>
+                    <div className="card-body d-flex justify-content-between align-items-center">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id={`task-checkbox-${task.id}`}
+                          checked={task.completed}
+                          onChange={() => this.handleTaskToggle(task.id)}
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor={`task-checkbox-${task.id}`}
+                          style={{ textDecoration: task.completed ? 'line-through' : 'none' }}
+                        >
+                          {task.title}
+                        </label>
+                        <div>
+                          <button
+                            className="btn btn-danger btn-sm mt-2"
+                            onClick={() => this.handleDeleteTask(task.id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                      <span className={`badge ${this.getBadgeClass(task.priority)}`}>
+                        {task.priority}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        {showModal && (
+          <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Add New Task</h5>
+                  <button type="button" className="btn-close" onClick={this.handleCloseModal}></button>
+                </div>
+                <form onSubmit={this.handleSubmitNewTask}>
+                  <div className="modal-body">
+                    <div className="mb-3">
+                      <label className="form-label" htmlFor="new-task-title">Task Title</label>
+                      <input
+                        type="text"
+                        id="new-task-title"
+                        className="form-control"
+                        placeholder="Enter task title..."
+                        value={newTaskTitle}
+                        onChange={this.handleNewTaskTitleChange}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label className="form-label" htmlFor="new-task-priority">Priority</label>
+                      <select
+                        id="new-task-priority"
+                        className="form-select"
+                        value={newTaskPriority}
+                        onChange={this.handleNewTaskPriorityChange}
+                      >
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" onClick={this.handleCloseModal}>
+                      Close
+                    </button>
+                    <button type="submit" className="btn btn-primary">
+                      Add Task
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+
+export default App;
+=====================================================================================
+2. src/App.css
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.card {
+  transition: all 0.2s ease-in-out;
+}
+
+.form-check-label {
+  margin-left: 8px;
+}
+===============================================================
+3. src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+reportWebVitals();
+==============================================================
+4. src/index.css
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+=====================================================================
+5. src/setupTests.js
+import '@testing-library/jest-dom';
+=====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

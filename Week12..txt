@@ -1,0 +1,816 @@
+Week 12 
+1.COD transit connect 
+src/App.js
+
+import React from 'react';
+import './App.css';
+import StopCard from './components/StopCard';
+
+function App() {
+  return (
+    <div className="app">
+      <header className="header">
+        <h1>Transit Connect</h1>
+        <p>Metro Departure Board</p>
+      </header>
+
+      <div className="board">
+        <StopCard station="Central Square" time={4} />
+        <StopCard station="Riverside" time={9} />
+        <StopCard station="Airport Link" time={15} />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+===============================================================
+src/components/StopCard.jsx
+
+import React from 'react';
+import './StopCard.css';
+
+function StopCard({ station, time }) {
+  return (
+    <div className="stop-card">
+      <h2>{station}</h2>
+      <p>Due in {time} min</p>
+    </div>
+  );
+}
+
+export default StopCard;
+
+==================================================================
+src/App.css
+
+body {
+  margin: 0;
+  background: #11151c;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #d8dde5;
+}
+
+.app {
+  width: 80%;
+  max-width: 900px;
+  margin: 60px auto;
+}
+
+.header h1 {
+  margin: 0;
+  color: #ffbd00;
+  font-size: 42px;
+  letter-spacing: 3px;
+}
+
+.header p {
+  margin: 8px 0 25px;
+  color: #718096;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: #a77b00;
+  margin-bottom: 20px;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+==========================================================================
+src/components/StopCard.css
+
+.stop-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1d232d;
+  border-left: 6px solid #ffbd00;
+  padding: 16px 20px;
+  min-height: 42px;
+  box-sizing: border-box;
+}
+
+.stop-card h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+.stop-card p {
+  margin: 0;
+  color: #a7c7dc;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+============================================================================
+src/index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+=============================================================
+2.COD weather point 
+src/App.js
+
+import React, { useState } from 'react';
+import './App.css';
+import CityCard from './components/CityCard';
+
+function App() {
+  const [isFahrenheit, setIsFahrenheit] = useState(false);
+
+  const cities = [
+    { city: 'Chennai', temperature: 30 },
+    { city: 'Delhi', temperature: 25 },
+    { city: 'Shimla', temperature: 10 }
+  ];
+
+  const toggleUnit = () => {
+    setIsFahrenheit(!isFahrenheit);
+  };
+
+  return (
+    <div className="app">
+      <h1>Weather Point</h1>
+      <p className="subtitle">City Temperatures</p>
+
+      <button onClick={toggleUnit}>
+        {isFahrenheit ? 'Show in Celsius' : 'Show in Fahrenheit'}
+      </button>
+
+      <div className="city-row">
+        {cities.map((item) => {
+          const temperature = isFahrenheit
+            ? (item.temperature * 9 / 5) + 32
+            : item.temperature;
+
+          return (
+            <CityCard
+              key={item.city}
+              city={item.city}
+              temperature={temperature}
+              unit={isFahrenheit ? 'F' : 'C'}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+=================================================================
+src/components/CityCard.jsx
+
+import React from 'react';
+import './CityCard.css';
+
+function CityCard({ city, temperature, unit }) {
+  return (
+    <div className="city-card">
+      <h2>{city}</h2>
+      <p>{temperature} {unit}</p>
+    </div>
+  );
+}
+
+export default CityCard;
+
+===============================================================
+src/App.css
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f0ff;
+  color: #29265c;
+}
+
+.app {
+  min-height: 100vh;
+  text-align: center;
+  padding-top: 50px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.subtitle {
+  margin: 8px 0 18px;
+  color: #7770a8;
+}
+
+button {
+  background: #5542ad;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 35px;
+}
+
+.city-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+====================================================================
+src/components/CityCard.css
+
+.city-card {
+  width: 130px;
+  background: white;
+  border: 1px solid #e1dcf5;
+  border-radius: 10px;
+  padding: 18px 10px;
+  box-sizing: border-box;
+}
+
+.city-card h2 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: normal;
+  color: #403b70;
+}
+
+.city-card p {
+  margin: 0;
+  font-size: 20px;
+  color: #5542ad;
+}
+===============================================================
+Week 12 notecraft task board
+CY
+src/App.js
+
+import React, { useState } from 'react';
+import './App.css';
+import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
+
+function App() {
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (task) => {
+    setTasks((prevTasks) => [...prevTasks, task]);
+  };
+
+  const removeTask = (index) => {
+    setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="app">
+      <header>
+        <h1>NoteCraft</h1>
+        <p>Task Board</p>
+      </header>
+
+      <div className="board">
+        <TaskForm onAdd={addTask} />
+        <TaskList tasks={tasks} onRemove={removeTask} />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+=======================================================================
+src/components/TaskForm.jsx
+
+import React, { useState } from 'react';
+import './TaskForm.css';
+
+function TaskForm({ onAdd }) {
+  const [task, setTask] = useState('');
+
+  const handleAdd = () => {
+    if (task.trim() === '') {
+      return;
+    }
+
+    onAdd(task.trim());
+    setTask('');
+  };
+
+  return (
+    <div className="task-form">
+      <input
+        type="text"
+        placeholder="Enter task"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+      />
+      <button onClick={handleAdd}>Add Task</button>
+    </div>
+  );
+}
+
+export default TaskForm;
+
+=======================================================================
+src/components/TaskList.jsx
+
+import React from 'react';
+import './TaskList.css';
+
+function TaskList({ tasks, onRemove }) {
+  if (tasks.length === 0) {
+    return (
+      <div className="task-list">
+        <p className="empty-message">No tasks yet</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="task-list">
+      {tasks.map((task, index) => (
+        <div className="task-row" key={index}>
+          <span>{task}</span>
+          <button onClick={() => onRemove(index)}>Remove</button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default TaskList;
+
+===============================================================
+src/App.css
+
+body {
+  margin: 0;
+  background: #faf6ed;
+  font-family: Arial, sans-serif;
+  color: #292929;
+}
+
+.app {
+  width: 70%;
+  max-width: 700px;
+  margin: 50px auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+header p {
+  margin: 8px 0;
+  color: #9a8f82;
+}
+
+.board {
+  background: white;
+  border: 1px solid #eadfce;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+=====================================================================
+src/components/TaskForm.css
+
+
+.task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #e0d5c5;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.task-form button {
+  background: #bd6328;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+=======================================================================
+src/components/TaskList.css
+
+.task-list {
+  width: 100%;
+}
+
+.empty-message {
+  text-align: center;
+  color: #aaa096;
+  padding: 20px 0;
+  margin: 0;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 8px;
+  border-bottom: 1px solid #eee5d9;
+  font-size: 15px;
+}
+
+.task-row:last-child {
+  border-bottom: none;
+}
+
+.task-row button {
+  background: white;
+  color: #bd6328;
+  border: 1px solid #d99b75;
+  border-radius: 5px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+======================================================================
+src/index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+================================================================
+1.PAH coffee menu 
+src/App.js
+
+
+import React from 'react';
+import './App.css';
+import MenuItem from './components/MenuItem';
+
+function App() {
+  return (
+    <div className="app">
+      <header>
+        <h1>BrewNova</h1>
+        <p>Coffee Menu</p>
+      </header>
+
+      <div className="menu-board">
+        <MenuItem name="Espresso" price={120} />
+        <MenuItem name="Cappuccino" price={150} />
+        <MenuItem name="Cold Brew" price={180} />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+============================================================
+src/components/MenuItem.jsx
+
+import React from 'react';
+import './MenuItem.css';
+
+function MenuItem({ name, price }) {
+  return (
+    <div className="menu-item">
+      <h2>{name}</h2>
+      <p>Rs. {price}</p>
+    </div>
+  );
+}
+
+export default MenuItem;
+
+===========================================================
+src/App.css
+
+body {
+  margin: 0;
+  background: #f5efe4;
+  color: #3b2b20;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.app {
+  width: 80%;
+  max-width: 850px;
+  margin: 50px auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+header p {
+  margin: 8px 0 18px;
+  color: #8b6f5a;
+  font-size: 16px;
+}
+
+header::after {
+  content: '';
+  display: block;
+  width: 80%;
+  height: 2px;
+  background: #c7a27b;
+  margin: 0 auto;
+}
+
+.menu-board {
+  background: #fffdf8;
+  border: 1px solid #eadbc8;
+  border-radius: 8px;
+  padding: 18px 22px;
+}
+
+===========================================================
+src/components/MenuItem.css
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px dotted #d8c6b2;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.menu-item p {
+  margin: 0;
+  color: #8b4f2c;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+===========================================================
+src/index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+==========================================================
+2.PAH urban kitchen 
+src/App.js
+
+import React, { useState } from 'react';
+import './App.css';
+import SearchBar from './components/SearchBar';
+import RecipeList from './components/RecipeList';
+
+function App() {
+  const [query, setQuery] = useState('');
+
+  const recipes = [
+    'Paneer Butter Masala',
+    'Veg Biryani',
+    'Masala Dosa',
+    'Tomato Soup',
+    'Paneer Tikka'
+  ];
+
+  const filteredRecipes = recipes.filter((recipe) =>
+    recipe.toLowerCase().includes(query.toLowerCase())
+  );
+
+  return (
+    <div className="app">
+      <header>
+        <h1>Urban Kitchen</h1>
+        <p>Recipe Finder</p>
+      </header>
+
+      <div className="panel">
+        <SearchBar query={query} onSearch={setQuery} />
+        <RecipeList recipes={filteredRecipes} />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+============================================================
+src/components/SearchBar.jsx
+
+import React from 'react';
+import './SearchBar.css';
+
+function SearchBar({ query, onSearch }) {
+  return (
+    <div className="search-bar">
+      <input
+        type="text"
+        placeholder="Search recipes"
+        value={query}
+        onChange={(e) => onSearch(e.target.value)}
+      />
+    </div>
+  );
+}
+
+export default SearchBar;
+
+=========================================================
+src/components/RecipeList.jsx
+
+import React from 'react';
+import './RecipeList.css';
+
+function RecipeList({ recipes }) {
+  if (recipes.length === 0) {
+    return (
+      <div className="recipe-list">
+        <p className="empty-message">No recipes found</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="recipe-list">
+      {recipes.map((recipe, index) => (
+        <div className="recipe-row" key={index}>
+          {recipe}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default RecipeList;
+
+===========================================================
+src/App.css
+
+body {
+  margin: 0;
+  background: #eef7f1;
+  color: #284c3d;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  width: 70%;
+  max-width: 700px;
+  margin: 45px auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+header p {
+  margin: 6px 0;
+  color: #729887;
+  font-size: 14px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #dfe9e3;
+  border-radius: 7px;
+  padding: 14px;
+}
+
+============================================================
+src/components/SearchBar.css
+
+.search-bar {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #d9e3dd;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: #284c3d;
+}
+
+===============================================================
+src/components/RecipeList.css
+
+.recipe-list {
+  margin-top: 10px;
+}
+
+.recipe-row {
+  padding: 10px 6px;
+  border-bottom: 1px solid #edf1ee;
+  color: #365c4c;
+  font-size: 14px;
+}
+
+.recipe-row:last-child {
+  border-bottom: none;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 20px 0;
+  margin: 0;
+}
+
+============================================================
+src/index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+========================================================
+

@@ -1,0 +1,908 @@
+Week 8 cod1 Employee Directory app
+1. src/App.js
+import React, { Component } from 'react';
+import './App.css';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: '',
+      employees: [
+        'John Doe',
+        'Jane Smith',
+        'Mike Johnson',
+        'Emily Davis',
+        'James Brown',
+        'Jennifer Wilson',
+        'Paul Garcia',
+        'Laura Martinez'
+      ],
+      filteredEmployees: [
+        'John Doe',
+        'Jane Smith',
+        'Mike Johnson',
+        'Emily Davis',
+        'James Brown',
+        'Jennifer Wilson',
+        'Paul Garcia',
+        'Laura Martinez'
+      ]
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.query !== this.state.query) {
+      this.filterEmployees();
+    }
+  }
+
+  handleSearch = (event) => {
+    this.setState({ query: event.target.value });
+  };
+
+  filterEmployees = () => {
+    const filteredEmployees = this.state.employees.filter((employee) =>
+      employee.toLowerCase().includes(this.state.query.toLowerCase())
+    );
+
+    this.setState({ filteredEmployees });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Employee Directory</h1>
+
+        <input
+          type="text"
+          placeholder="Search employees..."
+          value={this.state.query}
+          onChange={this.handleSearch}
+        />
+
+        <div className="employee-list">
+          {this.state.filteredEmployees.map((employee, index) => (
+            <div className="employee" key={index}>
+              {employee}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
+--------------------------------------------------------------------------------
+2. src/App.css stopwatch web app
+.App {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  text-align: center;
+  padding-top: 25px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 32px;
+}
+
+input {
+  width: 326px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.employee-list {
+  width: 310px;
+  margin: 16px auto;
+}
+
+.employee {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  border-radius: 2px;
+}
+-------------------------------------------------------------------------------------------
+2. cod 
+src/App.js
+import React from 'react';
+import './App.css';
+import Stopwatch from './Stopwatch';
+
+function App() {
+  return (
+    <div className="App">
+      <Stopwatch />
+    </div>
+  );
+}
+
+export default App;
+-----------------------------------------------------------------
+src/Stopwatch.jsx
+import React, { Component } from 'react';
+
+class Stopwatch extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      time: 0,
+      isRunning: false,
+      laps: []
+    };
+    this.interval = null;
+    this.startTime = 0;
+  }
+
+  componentDidMount() {
+    this.interval = null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.isRunning && this.state.isRunning) {
+      this.startTime = Date.now() - this.state.time;
+      this.interval = setInterval(() => {
+        this.setState({
+          time: Date.now() - this.startTime
+        });
+      }, 10);
+    }
+
+    if (prevState.isRunning && !this.state.isRunning && this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
+  formatTime = (milliseconds) => {
+    const minutes = Math.floor(milliseconds / 60000);
+    const seconds = Math.floor((milliseconds % 60000) / 1000);
+    const centiseconds = Math.floor((milliseconds % 1000) / 10);
+
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(centiseconds).padStart(2, '0')}`;
+  };
+
+  handleStart = () => {
+    this.setState({
+      isRunning: true
+    });
+  };
+
+  handleStop = () => {
+    this.setState((prevState) => ({
+      isRunning: false,
+      laps: [...prevState.laps, prevState.time]
+    }));
+  };
+
+  handleReset = () => {
+    this.setState({
+      time: 0,
+      isRunning: false,
+      laps: []
+    });
+  };
+
+  handleLap = () => {
+    this.setState((prevState) => ({
+      laps: [...prevState.laps, prevState.time]
+    }));
+  };
+
+  render() {
+    const { time, isRunning, laps } = this.state;
+
+    return (
+      <div className="stopwatch">
+        <h2>Stopwatch</h2>
+
+        <div className="time">
+          {this.formatTime(time)}
+        </div>
+
+        <div className="buttons">
+          <button
+            className="start"
+            onClick={this.handleStart}
+            disabled={isRunning}
+          >
+            Start
+          </button>
+
+          <button
+            className="stop"
+            onClick={this.handleStop}
+            disabled={!isRunning}
+          >
+            Stop
+          </button>
+
+          <button
+            className="reset"
+            onClick={this.handleReset}
+            disabled={isRunning}
+          >
+            Reset
+          </button>
+        </div>
+
+        <button
+          className="lap"
+          onClick={this.handleLap}
+          disabled={!isRunning}
+        >
+          Add Lap
+        </button>
+
+        <div className="laps">
+          {laps.map((lap, index) => (
+            <div className="lap-item" key={index}>
+              {this.formatTime(lap)}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Stopwatch;
+----------------------------------------------------------------------------
+src/App.css
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-top: 110px;
+  box-sizing: border-box;
+}
+
+.stopwatch {
+  width: 205px;
+  min-height: 155px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #f7f7f7;
+  box-sizing: border-box;
+}
+
+.stopwatch h2 {
+  font-size: 13px;
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.time {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+button {
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-size: 9px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.start {
+  background-color: #28a745;
+}
+
+.stop {
+  background-color: #dc3545;
+}
+
+.reset {
+  background-color: #17a2b8;
+}
+
+.lap {
+  background-color: #ffc107;
+  color: #333;
+  margin-top: 6px;
+}
+
+.laps {
+  margin-top: 10px;
+}
+
+.lap-item {
+  font-size: 11px;
+  margin: 3px 0;
+  color: #333;
+}
+-------------------------------------------------------------------------
+week 8 cy kids sketch pad 
+html 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suresh's Kids' Sketch Pad</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="sketchPad" width="500" height="300"></canvas>
+
+  <div class="content">
+    <h2>Suresh's Kids' Sketch Pad</h2>
+
+    <div class="controls">
+      <button id="defaultBtn">Default</button>
+      <button id="redBtn">Red</button>
+      <button id="blueBtn">Blue</button>
+      <button id="greenBtn">Green</button>
+      <button id="eraserBtn">Eraser</button>
+      <button id="clearBtn">Clear Canvas</button>
+    </div>
+
+    <div id="currentColorDisplay">
+      Current Drawing Color: <span id="currentColor">Black</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+----------------------------------------------------------------------------
+css
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+  background: white;
+}
+
+#sketchPad {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 300px;
+  border: 1px solid #999;
+  background: white;
+  box-sizing: border-box;
+  cursor: crosshair;
+}
+
+.content {
+  position: absolute;
+  top: 315px;
+  left: 0;
+  width: 500px;
+  text-align: center;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #222;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.controls button {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: white;
+  cursor: pointer;
+}
+
+#defaultBtn {
+  background-color: #212529;
+}
+
+#redBtn {
+  background-color: #dc3545;
+}
+
+#blueBtn {
+  background-color: #0d6efd;
+}
+
+#greenBtn {
+  background-color: #198754;
+}
+
+#eraserBtn {
+  background-color: #6c757d;
+}
+
+#clearBtn {
+  background-color: #ffc107;
+  color: #222;
+}
+
+#currentColorDisplay {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+#currentColor {
+  font-weight: bold;
+  color: #222;
+}
+------------------------------------------------------------------
+js 
+const canvas = document.getElementById('sketchPad');
+const ctx = canvas.getContext('2d');
+
+const defaultBtn = document.getElementById('defaultBtn');
+const redBtn = document.getElementById('redBtn');
+const blueBtn = document.getElementById('blueBtn');
+const greenBtn = document.getElementById('greenBtn');
+const eraserBtn = document.getElementById('eraserBtn');
+const clearBtn = document.getElementById('clearBtn');
+const currentColor = document.getElementById('currentColor');
+
+let drawing = false;
+
+ctx.strokeStyle = '#000000';
+ctx.lineWidth = 3;
+ctx.lineCap = 'round';
+ctx.lineJoin = 'round';
+
+ctx.fillStyle = '#ffffff';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+function startDrawing(event) {
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+
+  if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
+    drawing = true;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+  }
+}
+
+function draw(event) {
+  if (!drawing) {
+    return;
+  }
+
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+
+  if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  }
+}
+
+function stopDrawing() {
+  drawing = false;
+  ctx.closePath();
+}
+
+defaultBtn.addEventListener('click', function() {
+  ctx.strokeStyle = '#000000';
+  currentColor.textContent = 'Black';
+});
+
+redBtn.addEventListener('click', function() {
+  ctx.strokeStyle = '#ff0000';
+  currentColor.textContent = 'Red';
+});
+
+blueBtn.addEventListener('click', function() {
+  ctx.strokeStyle = '#0000ff';
+  currentColor.textContent = 'Blue';
+});
+
+greenBtn.addEventListener('click', function() {
+  ctx.strokeStyle = '#008000';
+  currentColor.textContent = 'Green';
+});
+
+eraserBtn.addEventListener('click', function() {
+  ctx.strokeStyle = '#ffffff';
+  currentColor.textContent = 'White (Eraser)';
+});
+
+clearBtn.addEventListener('click', function() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  if (currentColor.textContent === 'Red') {
+    ctx.strokeStyle = '#ff0000';
+  } else if (currentColor.textContent === 'Blue') {
+    ctx.strokeStyle = '#0000ff';
+  } else if (currentColor.textContent === 'Green') {
+    ctx.strokeStyle = '#008000';
+  } else if (currentColor.textContent === 'White (Eraser)') {
+    ctx.strokeStyle = '#ffffff';
+  } else {
+    ctx.strokeStyle = '#000000';
+  }
+});
+
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseout', stopDrawing);
+----------------------------------------------------------------------------
+pah 1 sohail image of webpage 
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layered Image Showcase</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="showcase">
+    <div class="buttons">
+      <button id="btn1" class="btn btn-primary">Image 1</button>
+      <button id="btn2" class="btn btn-success">Image 2</button>
+      <button id="btn3" class="btn btn-danger">Image 3</button>
+    </div>
+
+    <div class="image-container">
+      <img id="img1" class="layered-img" src="img1.jpg" alt="Image 1">
+      <img id="img2" class="layered-img" src="img2.jpg" alt="Image 2">
+      <img id="img3" class="layered-img" src="img3.jpg" alt="Image 3">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+----------------------------------------------------------------------------
+css
+body {
+  margin: 0;
+  padding: 30px 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  text-align: center;
+}
+
+.showcase {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.buttons button {
+  font-size: 12px;
+  padding: 5px 12px;
+}
+
+.image-container {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.layered-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+#img1 {
+  z-index: 1;
+}
+
+#img2 {
+  z-index: 2;
+}
+
+#img3 {
+  z-index: 3;
+}
+
+@media (max-width: 600px) {
+  .image-container {
+    width: 250px;
+    height: 333px;
+  }
+
+  .layered-img {
+    width: 250px;
+    height: 333px;
+  }
+}
+--------------------------------------------------------
+js
+document.addEventListener('DOMContentLoaded', function () {
+  const img1 = document.getElementById('img1');
+  const img2 = document.getElementById('img2');
+  const img3 = document.getElementById('img3');
+
+  const btn1 = document.getElementById('btn1');
+  const btn2 = document.getElementById('btn2');
+  const btn3 = document.getElementById('btn3');
+
+  function bringToFront(image) {
+    img1.style.zIndex = '1';
+    img2.style.zIndex = '1';
+    img3.style.zIndex = '1';
+    image.style.zIndex = '10';
+  }
+
+  btn1.addEventListener('click', function () {
+    bringToFront(img1);
+  });
+
+  btn2.addEventListener('click', function () {
+    bringToFront(img2);
+  });
+
+  btn3.addEventListener('click', function () {
+    bringToFront(img3);
+  });
+});
+--------------------------------------------------------------
+5.pah-2 Rekha live textarea editor
+html 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Textarea Editor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Live Textarea Editor</h2>
+
+    <div class="controls">
+      <div class="control-item">
+        <label for="fontSizeSelect">Font Size</label>
+        <select id="fontSizeSelect" class="form-select">
+          <option value="12px">12px</option>
+          <option value="16px">16px</option>
+          <option value="20px">20px</option>
+        </select>
+      </div>
+
+      <div class="control-item">
+        <label for="fontColorSelect">Font Color</label>
+        <select id="fontColorSelect" class="form-select">
+          <option value="black">Black</option>
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
+        </select>
+      </div>
+
+      <div class="btn-group">
+        <button id="boldBtn" class="btn btn-outline-dark" type="button">
+          Bold
+        </button>
+        <button id="italicBtn" class="btn btn-outline-dark" type="button">
+          Italic
+        </button>
+        <button id="resetBtn" class="btn btn-outline-secondary" type="button">
+          Reset
+        </button>
+      </div>
+    </div>
+
+    <textarea id="editor" placeholder="Type something here..."></textarea>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+-----------------------------------------------------------------------
+css
+body {
+  margin: 0;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.controls {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.control-item {
+  flex: 1;
+}
+
+.control-item label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-select {
+  height: 34px;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.btn-group {
+  display: flex;
+  height: 34px;
+}
+
+.btn-group .btn {
+  font-size: 11px;
+  padding: 5px 10px;
+}
+
+.btn.active {
+  background-color: #212529;
+  color: white;
+}
+
+#editor {
+  display: block;
+  width: 100%;
+  height: 115px;
+  resize: vertical;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  color: black;
+  outline: none;
+}
+
+#editor:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.15);
+}
+-------------------------------------------------------------------------
+js
+document.addEventListener('DOMContentLoaded', function () {
+  const editor = document.getElementById('editor');
+  const fontSizeSelect = document.getElementById('fontSizeSelect');
+  const fontColorSelect = document.getElementById('fontColorSelect');
+  const boldBtn = document.getElementById('boldBtn');
+  const italicBtn = document.getElementById('italicBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const fontSize = '12px';
+  const color = 'black';
+  let fontWeight = 'normal';
+  let fontStyle = 'normal';
+
+  editor.style.fontSize = fontSize;
+  editor.style.color = color;
+  editor.style.fontWeight = fontWeight;
+  editor.style.fontStyle = fontStyle;
+
+  fontSizeSelect.addEventListener('change', function () {
+    editor.style.fontSize = fontSizeSelect.value;
+  });
+
+  fontColorSelect.addEventListener('change', function () {
+    editor.style.color = fontColorSelect.value;
+  });
+
+  boldBtn.addEventListener('click', function () {
+    boldBtn.classList.toggle('active');
+
+    if (boldBtn.classList.contains('active')) {
+      fontWeight = 'bold';
+    } else {
+      fontWeight = 'normal';
+    }
+
+    editor.style.fontWeight = fontWeight;
+  });
+
+  italicBtn.addEventListener('click', function () {
+    italicBtn.classList.toggle('active');
+
+    if (italicBtn.classList.contains('active')) {
+      fontStyle = 'italic';
+    } else {
+      fontStyle = 'normal';
+    }
+
+    editor.style.fontStyle = fontStyle;
+  });
+
+  resetBtn.addEventListener('click', function () {
+    fontSizeSelect.value = '12px';
+    fontColorSelect.value = 'black';
+
+    boldBtn.classList.remove('active');
+    italicBtn.classList.remove('active');
+
+    fontWeight = 'normal';
+    fontStyle = 'normal';
+
+    editor.style.fontSize = '12px';
+    editor.style.color = 'black';
+    editor.style.fontWeight = 'normal';
+    editor.style.fontStyle = 'normal';
+  });
+});
+----------------------------------------------------------------------------
+
+

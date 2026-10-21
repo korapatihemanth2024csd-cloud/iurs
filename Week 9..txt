@@ -1,0 +1,819 @@
+Week 9 
+Cod 1 medical shop inventory mangement
+src/components/MedicalShop.jsx
+import React, { useState } from 'react';
+
+function MedicalShop() {
+  const [inventory, setInventory] = useState([
+    { id: 1, name: 'Paracetamol', quantity: 50, price: 2.5 },
+    { id: 2, name: 'Aspirin', quantity: 30, price: 3 },
+    { id: 3, name: 'Band-Aid', quantity: 100, price: 1 }
+  ]);
+
+  const [newMedicine, setNewMedicine] = useState({
+    name: '',
+    quantity: '',
+    price: ''
+  });
+
+  const handleNewMedicineChange = (event) => {
+    const { name, value } = event.target;
+
+    setNewMedicine({
+      ...newMedicine,
+      [name]: value
+    });
+  };
+
+  const handleAddMedicine = (event) => {
+    event.preventDefault();
+
+    if (
+      newMedicine.name.trim() === '' ||
+      newMedicine.quantity === '' ||
+      newMedicine.price === ''
+    ) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    const newId =
+      inventory.length > 0
+        ? Math.max(...inventory.map((medicine) => medicine.id)) + 1
+        : 1;
+
+    const medicine = {
+      id: newId,
+      name: newMedicine.name,
+      quantity: Number(newMedicine.quantity),
+      price: Number(newMedicine.price)
+    };
+
+    setInventory([...inventory, medicine]);
+
+    setNewMedicine({
+      name: '',
+      quantity: '',
+      price: ''
+    });
+  };
+
+  return (
+    <div className="container my-4">
+      <h1 className="text-primary text-center mb-4">
+        Medical Shop Inventory
+      </h1>
+
+      <table className="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {inventory.map((medicine) => (
+            <tr key={medicine.id}>
+              <td>{medicine.id}</td>
+              <td>{medicine.name}</td>
+              <td>{medicine.quantity}</td>
+              <td>{medicine.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h2 className="text-success text-center mt-4 mb-3">
+        Add New Medicine
+      </h2>
+
+      <form onSubmit={handleAddMedicine}>
+        <div className="row g-2">
+          <div className="col-md-4">
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              placeholder="Name"
+              value={newMedicine.name}
+              onChange={handleNewMedicineChange}
+            />
+          </div>
+
+          <div className="col-md-3">
+            <input
+              type="number"
+              name="quantity"
+              className="form-control"
+              placeholder="Quantity"
+              min="0"
+              value={newMedicine.quantity}
+              onChange={handleNewMedicineChange}
+            />
+          </div>
+
+          <div className="col-md-3">
+            <input
+              type="number"
+              name="price"
+              className="form-control"
+              placeholder="Price"
+              min="0"
+              step="0.01"
+              value={newMedicine.price}
+              onChange={handleNewMedicineChange}
+            />
+          </div>
+
+          <div className="col-md-2">
+            <button
+              type="submit"
+              className="btn btn-success w-100"
+            >
+              Add Medicine
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default MedicalShop;
+---------------------------------------------------------------------
+src/App.js
+import React from 'react';
+import MedicalShop from './components/MedicalShop';
+import './App.css';
+
+function App() {
+  return <MedicalShop />;
+}
+
+export default App;
+----------------------------------------------------------------
+src/App.css
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: white;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.table {
+  font-size: 13px;
+}
+
+.table th {
+  font-weight: 600;
+}
+
+.form-control {
+  font-size: 12px;
+}
+
+.btn {
+  font-size: 12px;
+}
+--------------------------------------------------------------------
+cod 2 foodorder management
+src/components/FoodOrder.jsx
+import React, { useState } from 'react';
+
+function FoodOrder() {
+  const [orders, setOrders] = useState([
+    { id: 1, item: 'Burger', quantity: 2, price: 150 },
+    { id: 2, item: 'Pizza', quantity: 1, price: 300 },
+    { id: 3, item: 'Pasta', quantity: 3, price: 200 }
+  ]);
+
+  const [newOrder, setNewOrder] = useState({
+    item: '',
+    quantity: '',
+    price: ''
+  });
+
+  const handleNewOrderChange = (event) => {
+    const { name, value } = event.target;
+
+    setNewOrder({
+      ...newOrder,
+      [name]: value
+    });
+  };
+
+  const handleAddOrder = (event) => {
+    event.preventDefault();
+
+    if (
+      newOrder.item.trim() === '' ||
+      newOrder.quantity === '' ||
+      newOrder.price === ''
+    ) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    const newId =
+      orders.length > 0
+        ? Math.max(...orders.map((order) => order.id)) + 1
+        : 1;
+
+    const order = {
+      id: newId,
+      item: newOrder.item,
+      quantity: Number(newOrder.quantity),
+      price: Number(newOrder.price)
+    };
+
+    setOrders([...orders, order]);
+
+    setNewOrder({
+      item: '',
+      quantity: '',
+      price: ''
+    });
+  };
+
+  return (
+    <div className="container my-4">
+      <h1 className="text-primary text-center mb-4">
+        Food Order Management
+      </h1>
+
+      <table className="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Food Item</th>
+            <th>Quantity</th>
+            <th>Price ($)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {orders.map((order) => (
+            <tr key={order.id}>
+              <td>{order.id}</td>
+              <td>{order.item}</td>
+              <td>{order.quantity}</td>
+              <td>{order.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h2 className="text-success text-center mt-4 mb-3">
+        Add New Food Order
+      </h2>
+
+      <form onSubmit={handleAddOrder}>
+        <div className="row g-2">
+          <div className="col-md-4">
+            <input
+              type="text"
+              name="item"
+              className="form-control"
+              placeholder="Food Item"
+              value={newOrder.item}
+              onChange={handleNewOrderChange}
+            />
+          </div>
+
+          <div className="col-md-3">
+            <input
+              type="number"
+              name="quantity"
+              className="form-control"
+              placeholder="Quantity"
+              min="1"
+              value={newOrder.quantity}
+              onChange={handleNewOrderChange}
+            />
+          </div>
+
+          <div className="col-md-3">
+            <input
+              type="number"
+              name="price"
+              className="form-control"
+              placeholder="Price ($)"
+              min="0"
+              step="0.01"
+              value={newOrder.price}
+              onChange={handleNewOrderChange}
+            />
+          </div>
+
+          <div className="col-md-2">
+            <button
+              type="submit"
+              className="btn btn-success w-100"
+            >
+              Add Order
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default FoodOrder;
+---------------------------------------------------------
+src/App.js
+import React from 'react';
+import FoodOrder from './components/FoodOrder';
+import './App.css';
+
+function App() {
+  return <FoodOrder />;
+}
+
+export default App;
+----------------------------------------------
+src/App.css
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: white;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.table {
+  font-size: 13px;
+}
+
+.table th {
+  font-weight: 600;
+}
+
+.form-control {
+  font-size: 12px;
+}
+
+.btn {
+  font-size: 12px;
+}
+----------------------------------------------------------------
+1.cy music store 
+src/components/MusicStore.jsx
+import React, { useState } from 'react';
+
+function MusicStore() {
+  const [inventory, setInventory] = useState([
+    { id: 1, name: 'Acoustic Guitar', quantity: 10, price: 150 },
+    { id: 2, name: 'Electric Keyboard', quantity: 5, price: 300 },
+    { id: 3, name: 'Drum Set', quantity: 3, price: 500 }
+  ]);
+
+  const [newItem, setNewItem] = useState({
+    name: '',
+    quantity: '',
+    price: ''
+  });
+
+  const handleNewItemChange = (event) => {
+    const { name, value } = event.target;
+
+    setNewItem({
+      ...newItem,
+      [name]: value
+    });
+  };
+
+  const handleAddItem = (event) => {
+    event.preventDefault();
+
+    if (
+      newItem.name.trim() === '' ||
+      newItem.quantity === '' ||
+      newItem.price === ''
+    ) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    const newId =
+      inventory.length > 0
+        ? Math.max(...inventory.map((item) => item.id)) + 1
+        : 1;
+
+    const item = {
+      id: newId,
+      name: newItem.name,
+      quantity: Number(newItem.quantity),
+      price: Number(newItem.price)
+    };
+
+    setInventory([...inventory, item]);
+
+    setNewItem({
+      name: '',
+      quantity: '',
+      price: ''
+    });
+  };
+
+  return (
+    <div className="container my-4">
+      <h1 className="bg-dark text-warning text-center fw-bold py-3 rounded">
+        Music Store Inventory
+      </h1>
+
+      <table className="table table-bordered table-hover shadow-sm">
+        <thead className="table-warning">
+          <tr>
+            <th>ID</th>
+            <th>Instrument / Album</th>
+            <th>Quantity</th>
+            <th>Price ($)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {inventory.map((item) => (
+            <tr key={item.id}>
+              <td>
+                <span className="badge text-dark">
+                  {item.id}
+                </span>
+              </td>
+              <td className="fw-bold">{item.name}</td>
+              <td>{item.quantity}</td>
+              <td className="text-success">
+                ${item.price.toFixed(2)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h2 className="text-info text-center mt-4 mb-3">
+        Add New Instrument
+      </h2>
+
+      <form onSubmit={handleAddItem}>
+        <div className="row g-2">
+          <div className="col-md-4">
+            <input
+              type="text"
+              name="name"
+              className="form-control border-info"
+              placeholder="Instrument / Album Name"
+              value={newItem.name}
+              onChange={handleNewItemChange}
+            />
+          </div>
+
+          <div className="col-md-3">
+            <input
+              type="number"
+              name="quantity"
+              className="form-control border-info"
+              placeholder="Quantity"
+              min="0"
+              value={newItem.quantity}
+              onChange={handleNewItemChange}
+            />
+          </div>
+
+          <div className="col-md-3">
+            <input
+              type="number"
+              name="price"
+              className="form-control border-info"
+              placeholder="Price ($)"
+              min="0"
+              step="0.01"
+              value={newItem.price}
+              onChange={handleNewItemChange}
+            />
+          </div>
+
+          <div className="col-md-2">
+            <button
+              type="submit"
+              className="btn btn-warning w-100 fw-bold"
+            >
+              Add Item
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default MusicStore;
+-------------------------------------------------------------------------
+src/App.js
+import React from 'react';
+import MusicStore from './components/MusicStore';
+import './App.css';
+
+function App() {
+  return <MusicStore />;
+}
+
+export default App;
+=================================================================
+src/App.css
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: white;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.table {
+  font-size: 13px;
+}
+
+.table th {
+  font-weight: 600;
+}
+
+.form-control {
+  font-size: 12px;
+}
+
+.btn {
+  font-size: 12px;
+}
+====================================================================
+pah 1 bookstore 
+src/components/Bookstore.jsx
+import React, { useState } from 'react';
+
+function Bookstore() {
+  const [inventory, setInventory] = useState([
+    { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', stock: 12, price: 10.5 },
+    { id: 2, title: '1984', author: 'George Orwell', stock: 8, price: 9.0 },
+    { id: 3, title: 'To Kill a Mockingbird', author: 'Harper Lee', stock: 15, price: 12.0 }
+  ]);
+
+  const [newBook, setNewBook] = useState({
+    title: '',
+    author: '',
+    stock: '',
+    price: ''
+  });
+
+  const handleNewBookChange = (event) => {
+    const { name, value } = event.target;
+
+    setNewBook({
+      ...newBook,
+      [name]: value
+    });
+  };
+
+  const handleAddBook = (event) => {
+    event.preventDefault();
+
+    if (
+      newBook.title.trim() === '' ||
+      newBook.author.trim() === '' ||
+      newBook.stock === '' ||
+      newBook.price === ''
+    ) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    const newId = Math.max(...inventory.map(book => book.id)) + 1;
+
+    const book = {
+      id: newId,
+      title: newBook.title,
+      author: newBook.author,
+      stock: Number(newBook.stock),
+      price: Number(newBook.price)
+    };
+
+    setInventory([...inventory, book]);
+
+    setNewBook({
+      title: '',
+      author: '',
+      stock: '',
+      price: ''
+    });
+  };
+
+  return (
+    <div className="container my-5">
+      <h1 className="text-primary text-center fw-bold">
+        Bookstore Inventory
+      </h1>
+
+      <p className="text-muted text-center">
+        Manage your book collection with ease
+      </p>
+
+      <h2 className="text-success mt-4 mb-3">
+        Available Books
+      </h2>
+
+      <div className="row">
+        {inventory.map((book) => (
+          <div className="col-md-4 mb-3" key={book.id}>
+            <div className="card h-100 shadow-sm">
+              <div className="card-body">
+                <h5 className="card-title text-primary fw-bold">
+                  {book.title}
+                </h5>
+
+                <p className="card-text mb-1">
+                  by {book.author}
+                </p>
+
+                <p className="card-text mb-1">
+                  <strong>Stock:</strong> {book.stock}
+                </p>
+
+                <p className="card-text mb-0">
+                  <strong>Price:</strong> ${book.price.toFixed(2)}
+                </p>
+              </div>
+
+              <div className="card-footer text-center">
+                <span className="badge bg-info">
+                  ID: {book.id}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-success mt-4 mb-3">
+        Add a New Book
+      </h2>
+
+      <div className="card shadow-sm p-2">
+        <form onSubmit={handleAddBook}>
+          <div className="row g-2">
+            <div className="col-md-3">
+              <input
+                type="text"
+                name="title"
+                className="form-control"
+                placeholder="Book Title"
+                value={newBook.title}
+                onChange={handleNewBookChange}
+              />
+            </div>
+
+            <div className="col-md-3">
+              <input
+                type="text"
+                name="author"
+                className="form-control"
+                placeholder="Author"
+                value={newBook.author}
+                onChange={handleNewBookChange}
+              />
+            </div>
+
+            <div className="col-md-2">
+              <input
+                type="number"
+                name="stock"
+                className="form-control"
+                placeholder="Stock"
+                min="0"
+                value={newBook.stock}
+                onChange={handleNewBookChange}
+              />
+            </div>
+
+            <div className="col-md-2">
+              <input
+                type="number"
+                name="price"
+                className="form-control"
+                placeholder="Price ($)"
+                min="0"
+                step="0.01"
+                value={newBook.price}
+                onChange={handleNewBookChange}
+              />
+            </div>
+
+            <div className="col-md-2">
+              <button
+                type="submit"
+                className="btn btn-success w-100"
+              >
+                Add Book
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default Bookstore;
+=================================================================
+src/App.js
+import React from 'react';
+import Bookstore from './components/Bookstore';
+import './App.css';
+
+function App() {
+  return <Bookstore />;
+}
+
+export default App;
+====================================================================
+src/App.css
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: white;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.card {
+  font-size: 12px;
+}
+
+.card-title {
+  font-size: 13px;
+}
+
+.card-footer {
+  padding: 4px;
+}
+
+.form-control {
+  font-size: 11px;
+}
+
+.btn {
+  font-size: 11px;
+}
+
+.badge {
+  font-size: 9px;
+}
+=======================================================================

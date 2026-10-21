@@ -1,0 +1,850 @@
+Week 11 COD library book card
+
+1. src/components/BookCard.jsx
+import React from "react";
+import PropTypes from "prop-types";
+import "./BookCard.css";
+
+function BookCard({ bookTitle, authorName, availabilityStatus }) {
+  return (
+    <div id="book-card">
+      <h2 id="book-title">{bookTitle}</h2>
+      <p id="author-name">Author: {authorName}</p>
+      <p id="availability-status">Status: {availabilityStatus}</p>
+    </div>
+  );
+}
+
+BookCard.propTypes = {
+  bookTitle: PropTypes.string.isRequired,
+  authorName: PropTypes.string.isRequired,
+  availabilityStatus: PropTypes.string.isRequired,
+};
+
+export default BookCard;
+=========================================================================
+
+2. src/components/BookCard.css
+
+#book-card {
+  background: white;
+  border: 2px solid #6c63ff;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 400px;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#book-title {
+  color: #6c63ff;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+#author-name {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+#availability-status {
+  color: #27ae60;
+  font-size: 18px;
+  font-weight: bold;
+}
+=================================================================================
+
+3. src/App.js
+import React from "react";
+import BookCard from "./components/BookCard";
+
+function App() {
+  return (
+    <div>
+      <BookCard
+        bookTitle="The Alchemist"
+        authorName="Paulo Coelho"
+        availabilityStatus="Available"
+      />
+    </div>
+  );
+}
+
+export default App;
+========================================================================================
+
+4. src/App.css
+
+Delete everything inside App.css and leave it as:
+===============================================================================================
+
+5. src/index.css
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1f5f9;
+}
+=========================================================================
+
+6. src/index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+===========================================================================
+2.COD product price tag
+
+1. src/components/PriceTag.jsx
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import "./PriceTag.css";
+
+function PriceTag({ productName, originalPrice }) {
+  const [isDiscounted, setIsDiscounted] = useState(false);
+
+  const displayedPrice = isDiscounted
+    ? originalPrice * 0.9
+    : originalPrice;
+
+  const toggleDiscount = () => {
+    setIsDiscounted(!isDiscounted);
+  };
+
+  return (
+    <div id="price-tag">
+      <h2 id="product-name">{productName}</h2>
+
+      <p id="displayed-price">
+        Price: ₹{displayedPrice}
+      </p>
+
+      <button id="toggle-discount" onClick={toggleDiscount}>
+        {isDiscounted ? "Remove Discount" : "Apply Discount"}
+      </button>
+    </div>
+  );
+}
+
+PriceTag.propTypes = {
+  productName: PropTypes.string.isRequired,
+  originalPrice: PropTypes.number.isRequired,
+};
+
+export default PriceTag;
+=================================================================================
+
+2. src/components/PriceTag.css
+#price-tag {
+  background: white;
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 400px;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#product-name {
+  color: #e67e22;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+#displayed-price {
+  color: #2c3e50;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+#toggle-discount {
+  background: #e67e22;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+========================================================================
+
+3. src/App.js
+import React from "react";
+import PriceTag from "./components/PriceTag";
+
+function App() {
+  return (
+    <div>
+      <PriceTag
+        productName="Wireless Headphones"
+        originalPrice={2000}
+      />
+    </div>
+  );
+}
+
+export default App;
+======================================================================
+
+4. src/App.css
+You don't need anything here. You can leave it empty.
+=========================================================================
+
+5. src/index.css
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1f5f9;
+}
+=========================================================================
+
+6. src/index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.css";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+==========================================================================
+
+Week 11 CY student dashboard
+1. src/components/Navbar.jsx
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import "./Navbar.css";
+
+function Navbar({ studentName }) {
+  return (
+    <nav id="navbar">
+      <span id="nav-brand">Student Dashboard</span>
+
+      <div id="nav-links">
+        <Link to="/" id="home-link">
+          Home
+        </Link>
+
+        <Link to="/marks" id="marks-link">
+          Marks
+        </Link>
+      </div>
+
+      <span id="nav-student">Welcome, {studentName}</span>
+    </nav>
+  );
+}
+
+Navbar.propTypes = {
+  studentName: PropTypes.string.isRequired,
+};
+
+export default Navbar;
+==========================================================================
+
+2. src/components/Navbar.css
+#navbar {
+  background: #1a237e;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav-brand {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+#nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+#nav-student {
+  color: #90caf9;
+  font-size: 15px;
+}
+==============================================================================
+
+3. src/components/Marks.jsx
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import "./Marks.css";
+
+function Marks({ marks }) {
+  const [totalScore, setTotalScore] = useState(0);
+
+  useEffect(() => {
+    const total = marks.reduce((sum, mark) => sum + mark.score, 0);
+    setTotalScore(total);
+
+    console.log("Visited Marks Page");
+  }, [marks]);
+
+  return (
+    <div id="marks-container">
+      <h1 id="marks-title">Subject Marks</h1>
+
+      <div id="marks-list">
+        {marks.map((mark, index) => (
+          <div className="mark-item" key={index}>
+            <span className="mark-subject">{mark.subject}</span>
+            <span className="mark-score">Score: {mark.score}</span>
+          </div>
+        ))}
+      </div>
+
+      <p id="total-score">Total Score: {totalScore}</p>
+    </div>
+  );
+}
+
+Marks.propTypes = {
+  marks: PropTypes.arrayOf(
+    PropTypes.shape({
+      subject: PropTypes.string,
+      score: PropTypes.number,
+    })
+  ).isRequired,
+};
+
+export default Marks;
+===============================================================================
+
+4. src/components/Marks.css
+#marks-container {
+  max-width: 600px;
+  margin: 60px auto;
+  background: white;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#marks-title {
+  color: #1a237e;
+  font-size: 26px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mark-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.mark-subject {
+  color: #333;
+  font-size: 16px;
+}
+
+.mark-score {
+  color: #27ae60;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#total-score {
+  color: #1a237e;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 16px;
+  text-align: right;
+}
+==========================================================================
+
+5. src/App.js
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Marks from "./components/Marks";
+import "./App.css";
+
+function App() {
+  const marks = [
+    { subject: "Mathematics", score: 92 },
+    { subject: "Physics", score: 85 },
+    { subject: "Chemistry", score: 78 },
+    { subject: "Computer Science", score: 96 },
+    { subject: "English", score: 88 },
+  ];
+
+  return (
+    <BrowserRouter>
+      <div id="app-container">
+        <Navbar studentName="Meena Sharma" />
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div id="home-container">
+                <h1 id="home-title">Welcome to Your Dashboard</h1>
+                <p id="home-student-name">Student: Meena Sharma</p>
+                <p id="home-department">
+                  Department: Computer Science
+                </p>
+                <p id="home-message">
+                  Use the navigation bar to explore your Marks.
+                </p>
+              </div>
+            }
+          />
+
+          <Route path="/marks" element={<Marks marks={marks} />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+================================================================================
+
+6. src/App.css
+#app-container {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: #f0f4f8;
+}
+
+#home-container {
+  max-width: 600px;
+  margin: 60px auto;
+  background: white;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#home-title {
+  color: #1a237e;
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+#home-student-name,
+#home-department {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+#home-message {
+  color: #888;
+  font-size: 14px;
+  margin-top: 16px;
+}
+========================================================================================
+
+7. src/index.css
+body {
+  margin: 0;
+  padding: 0;
+}
+====================================================================
+
+8. src/index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+====================================================================
+
+1. PAH employee directory 
+1. src/components/EmployeeCard.jsx
+import React from "react";
+import PropTypes from "prop-types";
+import "./EmployeeCard.css";
+
+function EmployeeCard({ employeeName, role, department }) {
+  return (
+    <div className="employee-card">
+      <h2 className="employee-name">{employeeName}</h2>
+      <p className="employee-role">Role: {role}</p>
+      <p className="employee-department">
+        Department: {department}
+      </p>
+    </div>
+  );
+}
+
+EmployeeCard.propTypes = {
+  employeeName: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  department: PropTypes.string.isRequired,
+};
+
+export default EmployeeCard;
+====================================================================
+
+2. src/components/EmployeeCard.css
+.employee-card {
+  background: white;
+  border: 2px solid #2980b9;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 12px;
+  max-width: 280px;
+  display: inline-block;
+  vertical-align: top;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.employee-name {
+  color: #2980b9;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.employee-role {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.employee-department {
+  color: #27ae60;
+  font-size: 15px;
+  font-weight: bold;
+}
+=======================================================================
+
+3. src/App.js
+import React, { useState } from "react";
+import EmployeeCard from "./components/EmployeeCard";
+import "./App.css";
+
+function App() {
+  const [selectedDepartment, setSelectedDepartment] = useState("All");
+
+  const employees = [
+    {
+      id: 1,
+      employeeName: "Rajan Kumar",
+      role: "Software Engineer",
+      department: "Engineering",
+    },
+    {
+      id: 2,
+      employeeName: "Meena Iyer",
+      role: "Product Manager",
+      department: "Product",
+    },
+    {
+      id: 3,
+      employeeName: "Karthik Raj",
+      role: "UI Designer",
+      department: "Design",
+    },
+    {
+      id: 4,
+      employeeName: "Sneha Pillai",
+      role: "QA Engineer",
+      department: "Engineering",
+    },
+    {
+      id: 5,
+      employeeName: "Divya Nair",
+      role: "Data Analyst",
+      department: "Product",
+    },
+  ];
+
+  const filteredEmployees =
+    selectedDepartment === "All"
+      ? employees
+      : employees.filter(
+          (employee) =>
+            employee.department === selectedDepartment
+        );
+
+  const handleDepartmentChange = (event) => {
+    setSelectedDepartment(event.target.value);
+  };
+
+  return (
+    <div id="app-container">
+      <h1 id="directory-title">Employee Directory</h1>
+
+      <select
+        id="department-filter"
+        value={selectedDepartment}
+        onChange={handleDepartmentChange}
+      >
+        <option value="All">All</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Product">Product</option>
+        <option value="Design">Design</option>
+      </select>
+
+      <div id="employee-list">
+        {filteredEmployees.map((employee) => (
+          <EmployeeCard
+            key={employee.id}
+            employeeName={employee.employeeName}
+            role={employee.role}
+            department={employee.department}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+===========================================================
+
+4. src/App.css
+#app-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+#directory-title {
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+#department-filter {
+  display: block;
+  margin: 0 auto 24px auto;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+=============================================================
+
+5. src/index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+================================================================
+
+6. src/index.css
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f4f8;
+}
+============================================================
+
+2. PAH recipe book 
+1. src/components/RecipeCard.jsx
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import "./RecipeCard.css";
+
+function RecipeCard({ recipeName, cuisine, cookTime }) {
+  const [isFavourite, setIsFavourite] = useState(false);
+
+  useEffect(() => {
+    console.log("Favourite status changed for:", recipeName);
+  }, [isFavourite]);
+
+  const toggleFavourite = () => {
+    setIsFavourite(!isFavourite);
+  };
+
+  return (
+    <div className="recipe-card">
+      <h2 className="recipe-name">{recipeName}</h2>
+
+      <p className="recipe-cuisine">Cuisine: {cuisine}</p>
+
+      <p className="recipe-cook-time">Cook Time: {cookTime}</p>
+
+      <button id="favourite-btn" onClick={toggleFavourite}>
+        {isFavourite ? "Remove from Favourites" : "Add to Favourites"}
+      </button>
+
+      <p id="favourite-status">
+        {isFavourite
+          ? "Status: Favourite"
+          : "Status: Not a Favourite"}
+      </p>
+    </div>
+  );
+}
+
+RecipeCard.propTypes = {
+  recipeName: PropTypes.string.isRequired,
+  cuisine: PropTypes.string.isRequired,
+  cookTime: PropTypes.string.isRequired,
+};
+
+export default RecipeCard;
+===================================================================
+
+2. src/components/RecipeCard
+.css.recipe-card {
+  background: white;
+  border: 2px solid #c0392b;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 16px auto;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.recipe-name {
+  color: #c0392b;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.recipe-cuisine {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.recipe-cook-time {
+  color: #888;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+#favourite-btn {
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#favourite-status {
+  color: #27ae60;
+  font-size: 15px;
+  font-weight: bold;
+}
+======================================================================
+
+3. src/App.js
+import React from "react";
+import RecipeCard from "./components/RecipeCard";
+import "./App.css";
+
+function App() {
+  const recipes = [
+    {
+      id: 1,
+      recipeName: "Masala Dosa",
+      cuisine: "South Indian",
+      cookTime: "30 mins",
+    },
+    {
+      id: 2,
+      recipeName: "Butter Chicken",
+      cuisine: "North Indian",
+      cookTime: "45 mins",
+    },
+    {
+      id: 3,
+      recipeName: "Pav Bhaji",
+      cuisine: "Street Food",
+      cookTime: "40 mins",
+    },
+  ];
+
+  return (
+    <div id="app-container">
+      <h1 id="page-title">Recipe Book</h1>
+
+      {recipes.map((recipe) => (
+        <RecipeCard
+          key={recipe.id}
+          recipeName={recipe.recipeName}
+          cuisine={recipe.cuisine}
+          cookTime={recipe.cookTime}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default App;
+=====================================================================
+
+4. src/App.css
+#app-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+#page-title {
+  color: #c0392b;
+  font-size: 28px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+=======================================================
+
+5. src/index.css
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f4f8;
+}
+============================================================
+
+6. src/index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+======================================================================
