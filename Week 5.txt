@@ -1,0 +1,1002 @@
+kumar home rental platform
+
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divakar's Profile</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Divakar</h1>
+    </header>
+
+    <!-- Introduction Section -->
+    <article>
+        <h2>About Me</h2>
+        <p>
+            Hello! I am Divakar, a passionate web developer and technology enthusiast.
+            I enjoy creating well-structured and accessible web pages using modern HTML5
+            and CSS techniques. I believe in continuous learning and improving my skills
+            to stay updated with the latest trends in web development.
+        </p>
+    </article>
+
+    <!-- Hobbies Section -->
+    <section>
+        <h2>My Hobbies</h2>
+        <ul>
+            <li>Reading books on technology and programming</li>
+            <li>Playing cricket on weekends with friends</li>
+            <li>Exploring new web design trends and frameworks</li>
+            <li>Travelling to new places and experiencing different cultures</li>
+            <li>Photography and capturing beautiful moments</li>
+        </ul>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <h2>Contact Information</h2>
+        <p>Email: divakar@example.com</p>
+        <p>Phone: +91 98765 43210</p>
+    </footer>
+
+</body>
+</html>
+
+css
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divakar's Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+body {
+    margin: 20px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+header {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+}
+
+article {
+    margin: 20px 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+article h2 {
+    margin-bottom: 10px;
+}
+
+article p {
+    margin: 0;
+    padding: 5px;
+    font-size: 16px;
+}
+
+section {
+    margin: 20px 0;
+    padding: 20px;
+}
+
+section h2 {
+    margin-bottom: 10px;
+}
+
+ul {
+    margin: 10px 0;
+    padding-left: 25px;
+}
+
+li {
+    margin-bottom: 8px;
+    padding: 2px;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+footer p {
+    margin: 5px 0;
+    padding: 2px;
+}
+</body>
+</html>
+
+
+Rachel is designing the footer for her website
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachel's Website</title>
+
+    <!-- FontAwesome for social media icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <main>
+        <h1>Welcome to Rachel's Website</h1>
+        <p>This is the main content area. Scroll down to view the footer.</p>
+    </main>
+
+    <footer>
+
+        <!-- Social Media Icons -->
+        <div class="social-media">
+            <a href="https://www.facebook.com/" class="social-icon" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://twitter.com/" class="social-icon" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+
+            <a href="https://www.instagram.com/" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/" class="social-icon" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links">
+            <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+            <span class="separator">|</span>
+            <a href="/terms-of-service" class="footer-link">Terms of Service</a>
+        </div>
+
+        <!-- Copyright -->
+        <p class="copyright">&copy; 2025 Rachel's Website. All rights reserved.</p>
+
+    </footer>
+
+</body>
+</html>
+
+style css
+ 
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #111111;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+main h1 {
+    margin: 0 0 10px;
+}
+
+main p {
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    padding: 30px 20px;
+}
+
+/* Social Media */
+.social-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.social-icon {
+    color: #ffffff;
+    font-size: 22px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-2px);
+}
+
+.social-icon:nth-child(1):hover {
+    color: #1877f2;
+}
+
+.social-icon:nth-child(2):hover {
+    color: #1da1f2;
+}
+
+.social-icon:nth-child(3):hover {
+    color: #e4405f;
+}
+
+.social-icon:nth-child(4):hover {
+    color: #0a66c2;
+}
+
+/* Footer Links */
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #dddddd;
+}
+
+.separator {
+    color: #ffffff;
+}
+
+/* Copyright */
+.copyright {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    footer {
+        padding: 25px 15px;
+        gap: 15px;
+    }
+
+    .social-media {
+        gap: 20px;
+    }
+
+    .social-icon {
+        font-size: 20px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .separator {
+        display: none;
+    }
+}
+
+
+tech innovators summit
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Innovators Summit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header id="header">
+        <h1>Tech Innovators Summit</h1>
+    </header>
+
+    <!-- About Section -->
+    <section id="aboutSection">
+        <h2>About the Event</h2>
+        <p>
+            The Tech Innovators Summit is a premier gathering of technology
+            leaders, innovators, and visionaries from around the globe. This
+            event brings together industry experts to share insights on the
+            latest technological advancements, discuss emerging trends, and
+            explore opportunities for collaboration. Join us for an inspiring
+            day of learning, networking, and innovation.
+        </p>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakersSection">
+        <h2>Speakers</h2>
+
+        <ul id="speakersList">
+            <li>
+                <strong>Dr. Sarah Chen</strong> - Chief Technology Officer at InnovateTech
+            </li>
+            <li>
+                <strong>Michael Rodriguez</strong> - Founder of AI Solutions Global
+            </li>
+            <li>
+                <strong>Emma Watson</strong> - Head of Product at CloudSync Inc.
+            </li>
+            <li>
+                <strong>James Kumar</strong> - Blockchain Expert and Author
+            </li>
+            <li>
+                <strong>Dr. Liam Anderson</strong> - Director of Cybersecurity Research
+            </li>
+            <li>
+                <strong>David Park</strong> - CEO of Future Systems
+            </li>
+        </ul>
+    </section>
+
+    <!-- Agenda Section -->
+    <section id="agendaSection">
+        <h2>Agenda</h2>
+
+        <ul id="agendaList">
+            <li>9:00 AM - Registration and Networking Breakfast</li>
+            <li>10:00 AM - Opening Keynote: The Future of Technology</li>
+            <li>11:00 AM - Panel Discussion: AI and Machine Learning Trends</li>
+            <li>12:30 PM - Lunch Break and Networking</li>
+            <li>2:00 PM - Workshop: Building Scalable Cloud Solutions</li>
+            <li>3:30 PM - Fireside Chat: Cybersecurity in the Modern Age</li>
+            <li>5:00 PM - Closing Remarks and Networking Reception</li>
+        </ul>
+    </section>
+
+</body>
+</html>
+
+style css 
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+}
+
+/* Header */
+#header {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 40px 20px;
+    margin: 0;
+    text-align: center;
+}
+
+#header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 32px;
+}
+
+/* Common section styling */
+#aboutSection,
+#speakersSection,
+#agendaSection {
+    width: calc(100% - 40px);
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 40px 20px;
+}
+
+#aboutSection h2,
+#speakersSection h2,
+#agendaSection h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* About */
+#aboutSection {
+    background-color: #ecf0f1;
+}
+
+#aboutSection p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Speakers */
+#speakersSection {
+    background-color: #e8f4f8;
+}
+
+#speakersList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#speakersList li {
+    padding: 20px;
+    margin: 10px 0;
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+/* Agenda */
+#agendaSection {
+    background-color: #fef9e7;
+}
+
+#agendaList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#agendaList li {
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 4px solid #2c3e50;
+    background-color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #header {
+        padding: 30px 15px;
+    }
+
+    #header h1 {
+        font-size: 28px;
+    }
+
+    #aboutSection,
+    #speakersSection,
+    #agendaSection {
+        width: calc(100% - 30px);
+        padding: 30px 15px;
+        margin: 15px auto;
+    }
+
+    #speakersList {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #speakersList li {
+        flex: 1 1 100%;
+        min-width: 0;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #header {
+        padding: 25px 10px;
+    }
+
+    #header h1 {
+        font-size: 24px;
+    }
+
+    #aboutSection,
+    #speakersSection,
+    #agendaSection {
+        width: calc(100% - 20px);
+        padding: 25px 12px;
+        margin: 10px auto;
+    }
+
+    #aboutSection h2,
+    #speakersSection h2,
+    #agendaSection h2 {
+        font-size: 20px;
+    }
+
+    #speakersList li {
+        padding: 15px;
+    }
+
+    #agendaList li {
+        padding: 12px;
+    }
+}
+
+
+
+
+Emily is designing a testimonials section for her website
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Testimonials</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <section id="testimonialsSection">
+
+        <h2>What Our Customers Say</h2>
+
+        <div class="testimonialDiv">
+            <img src="Jessica Smith.jpg" alt="Jessica Smith">
+            <h4 class="customerName">Jessica Smith</h4>
+            <p class="customerReview">
+                Excellent service! The team was professional and delivered exactly
+                what I needed. Highly recommend their services to anyone looking
+                for quality work.
+            </p>
+        </div>
+
+        <div class="testimonialDiv">
+            <img src="Michael Johnson.jpg" alt="Michael Johnson">
+            <h4 class="customerName">Michael Johnson</h4>
+            <p class="customerReview">
+                Outstanding experience from start to finish. They understood my
+                requirements perfectly and exceeded all expectations. Will
+                definitely work with them again!
+            </p>
+        </div>
+
+        <div class="testimonialDiv">
+            <img src="Sarah Brown.jpg" alt="Sarah Brown">
+            <h4 class="customerName">Sarah Brown</h4>
+            <p class="customerReview">
+                Amazing quality and attention to detail. The project was completed
+                on time and within budget. I couldn't be happier with the results!
+            </p>
+        </div>
+
+    </section>
+
+</body>
+</html>
+
+style css
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Testimonials Section */
+#testimonialsSection {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+}
+
+#testimonialsSection h2 {
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: center;
+    font-size: 28px;
+}
+
+/* Individual Testimonials */
+.testimonialDiv {
+    flex: 1 1 300px;
+    margin: 0;
+    padding: 25px 20px;
+    min-width: 250px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Testimonial Hover */
+.testimonialDiv:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Customer Images */
+.testimonialDiv img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+
+    transition: transform 0.3s ease;
+}
+
+/* Image Zoom on Hover */
+.testimonialDiv:hover img {
+    transform: scale(1.1);
+}
+
+/* Customer Name */
+.customerName {
+    margin: 15px 0 10px 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+/* Customer Review */
+.customerReview {
+    margin: 0;
+    padding: 0;
+
+    color: #000000;
+    font-size: 14px;
+    line-height: 1.6;
+
+    transition: color 0.3s ease;
+}
+
+/* Review Color Change on Hover */
+.testimonialDiv:hover .customerReview {
+    color: #4a6cf7;
+}
+
+/* Large Screens - Horizontal Layout */
+@media (min-width: 769px) {
+    #testimonialsSection {
+        flex-direction: row;
+    }
+
+    .testimonialDiv {
+        flex: 1 1 calc(33.333% - 20px);
+    }
+}
+
+/* Small Screens - Vertical Layout */
+@media (max-width: 768px) {
+    #testimonialsSection {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 15px;
+    }
+
+    .testimonialDiv {
+        width: 100%;
+        max-width: 500px;
+        flex: 1 1 100%;
+    }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+    #testimonialsSection {
+        padding: 25px 10px;
+        gap: 15px;
+    }
+
+    #testimonialsSection h2 {
+        font-size: 24px;
+    }
+
+    .testimonialDiv {
+        min-width: 0;
+        padding: 20px 15px;
+    }
+
+    .testimonialDiv img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .customerName {
+        font-size: 17px;
+    }
+
+    .customerReview {
+        font-size: 13px;
+    }
+}
+
+
+
+
+Kumar is designing a product gallery for his online store
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <section id="gallerySection">
+
+        <h1>Product Gallery</h1>
+
+        <div class="productDiv">
+            <img
+                class="productImg"
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+                alt="Premium Wireless Headphones"
+            >
+            <p class="productDescription">
+                Premium Wireless Headphones - Experience crystal-clear sound
+                quality with noise cancellation technology.
+            </p>
+        </div>
+
+        <div class="productDiv">
+            <img
+                class="productImg"
+                src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80"
+                alt="Smart Watch"
+            >
+            <p class="productDescription">
+                Smart Watch - Track your fitness goals and stay connected
+                with notifications on your wrist.
+            </p>
+        </div>
+
+        <div class="productDiv">
+            <img
+                class="productImg"
+                src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=80"
+                alt="Portable Speaker"
+            >
+            <p class="productDescription">
+                Portable Speaker - Take your music anywhere with this compact
+                and powerful Bluetooth speaker.
+            </p>
+        </div>
+
+        <div class="productDiv">
+            <img
+                class="productImg"
+                src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80"
+                alt="Laptop Backpack"
+            >
+            <p class="productDescription">
+                Laptop Backpack - Durable and stylish backpack designed to
+                protect your laptop and accessories.
+            </p>
+        </div>
+
+        <div class="productDiv">
+            <img
+                class="productImg"
+                src="https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=800&q=80"
+                alt="Wireless Mouse"
+            >
+            <p class="productDescription">
+                Wireless Mouse - Ergonomic design with precision tracking
+                for comfortable use and productivity.
+            </p>
+        </div>
+
+        <div class="productDiv">
+            <img
+                class="productImg"
+                src="https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=800&q=80"
+                alt="USB C Hub"
+            >
+            <p class="productDescription">
+                USB-C Hub - Expand your connectivity with multiple ports
+                for all your devices.
+            </p>
+        </div>
+
+    </section>
+
+</body>
+</html>
+
+style css
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+}
+
+/* Product Gallery */
+#gallerySection {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Gallery Heading */
+#gallerySection h1 {
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: center;
+    font-size: 28px;
+}
+
+/* Product */
+.productDiv {
+    width: 50%;
+    padding: 1rem;
+    margin: 0.75rem;
+
+    background-color: #f5f5f5;
+    border-radius: 4px;
+
+    flex: 0 0 calc(50% - 1.5rem);
+}
+
+/* Product Image */
+.productImg {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* Product Description */
+.productDescription {
+    margin: 0;
+    padding: 10px 0 0 0;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* Two-column layout on screens wider than 768px */
+@media (min-width: 769px) {
+    #gallerySection {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .productDiv {
+        width: 50%;
+        flex: 0 0 calc(50% - 1.5rem);
+        padding: 1rem;
+        margin: 0.75rem;
+    }
+}
+
+/* Single-column layout on screens 768px and smaller */
+@media (max-width: 768px) {
+    #gallerySection {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .productDiv {
+        width: 100%;
+        flex: 0 0 100%;
+        padding: 1rem;
+        margin: 0.75rem 0;
+    }
+}
+
+/* Smaller screens */
+@media (max-width: 480px) {
+    #gallerySection {
+        padding: 10px;
+    }
+
+    .productDiv {
+        width: 100%;
+        flex: 0 0 100%;
+        padding: 1rem;
+        margin: 0.75rem 0;
+    }
+
+    #gallerySection h1 {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,666 @@
+profile card 
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="profile-card">
+
+        <header>
+            <h2>John Doe</h2>
+        </header>
+
+        <div class="profile-content">
+            <p>
+                John Doe is a passionate Web Developer who loves
+                creating modern and user-friendly websites.
+                He enjoys learning new technologies and exploring
+                innovative solutions.
+            </p>
+
+            <button type="button">Contact</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
+ 
+style.css
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.profile-card {
+    width: 350px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+header {
+    background-color: rgb(76, 174, 79);
+    color: white;
+    padding: 20px;
+}
+
+header h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-content {
+    padding: 25px;
+}
+
+.profile-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: rgb(76, 174, 79);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: rgb(69, 170, 63);
+}
+
+
+arun skill up
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillUp Login</title>
+    <link rel="styles.css">
+</head>
+<body>
+    <div class="login-form">
+        <h1>Sign In</h1>
+        <form>
+            <username>
+                Username
+            </username>
+            <input type="text" name="username" id="username">
+            <br>
+            <password>
+                Password
+            </password>
+            <input type="password" name="password" id="password">
+            <br>
+            <button type="submit">Submit</button>
+            <span>Error</span>
+        </form>
+    </div>
+    <script> src="script.js" </script>
+</body>
+</html>
+
+style css
+
+.loginForm {
+    background-color: rgb(0, 0, 255,);
+    border-radius: 10px;
+    margin-top: 50px;
+    padding: 30px;
+}
+
+h1 {
+    color: rgba(255, 0, 0, 0.5);
+    font-size: 100px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 250px;
+    height: 50px;
+    font-size: 16px;
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid;
+    background-color: transparent;
+}
+
+button[type="submit"] {
+    background-color: #0000FF;
+    color: yellow;
+    padding: 15px 30px;
+    border-radius: 50%;
+    cursor: non-resizable;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    color: red;
+}
+
+span {
+    display: none;
+}
+
+
+restaurant menu
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Restaurant - Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Delicious Restaurant</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Home Section -->
+    <div id="home" class="intro">
+        <h2>Welcome to Delicious Restaurant</h2>
+        <p>Enjoy delicious food made with fresh ingredients and love.</p>
+    </div>
+
+    <!-- Menu Section -->
+    <div id="menu" class="menu-container">
+
+        <!-- Starters -->
+        <div class="menu-section">
+            <h2 class="section-title">Starters</h2>
+
+            <div class="item">
+                <h3>Tomato Soup</h3>
+                <p>A delicious and creamy tomato soup.</p>
+                <span class="price">$5.99</span>
+            </div>
+
+            <div class="item">
+                <h3>Garlic Bread</h3>
+                <p>Freshly baked bread with garlic and butter.</p>
+                <span class="price">$4.99</span>
+            </div>
+
+            <div class="item">
+                <h3>Spring Rolls</h3>
+                <p>Crispy rolls filled with fresh vegetables.</p>
+                <span class="price">$6.99</span>
+            </div>
+        </div>
+
+        <!-- Main Course -->
+        <div class="menu-section">
+            <h2 class="section-title">Main Course</h2>
+
+            <div class="item">
+                <h3>Grilled Chicken</h3>
+                <p>Juicy grilled chicken served with fresh vegetables.</p>
+                <span class="price">$14.99</span>
+            </div>
+
+            <div class="item">
+                <h3>Vegetable Pasta</h3>
+                <p>Delicious pasta cooked with fresh vegetables.</p>
+                <span class="price">$12.99</span>
+            </div>
+
+            <div class="item">
+                <h3>Chicken Biryani</h3>
+                <p>Traditional aromatic rice cooked with chicken and spices.</p>
+                <span class="price">$13.99</span>
+            </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="menu-section">
+            <h2 class="section-title">Desserts</h2>
+
+            <div class="item">
+                <h3>Chocolate Cake</h3>
+                <p>Rich and moist chocolate cake.</p>
+                <span class="price">$6.99</span>
+            </div>
+
+            <div class="item">
+                <h3>Ice Cream</h3>
+                <p>Delicious ice cream available in different flavors.</p>
+                <span class="price">$3.99</span>
+            </div>
+
+            <div class="item">
+                <h3>Cheesecake</h3>
+                <p>Creamy cheesecake with a crunchy biscuit base.</p>
+                <span class="price">$7.99</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="about">
+        <h2>About Us</h2>
+        <p>
+            Delicious Restaurant offers fresh, tasty, and high-quality
+            food in a friendly atmosphere. Our goal is to make every
+            dining experience special.
+        </p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <p>&copy; 2025 Delicious Restaurant. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+
+style.css 
+
+/* Universal Selector */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(245, 245, 245);
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+    background-color: rgb(139, 0, 0);
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+/* Navigation Styling */
+nav {
+    background-color: rgb(51, 51, 51);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    background-color: rgb(139, 0, 0);
+    border-radius: 5px;
+}
+
+/* Introduction Section */
+.intro {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.intro h2 {
+    color: rgb(139, 0, 0);
+    margin-bottom: 10px;
+}
+
+/* Menu Container */
+.menu-container {
+    width: calc(100% - 40px);
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+/* Menu Sections */
+.menu-section {
+    background-color: white;
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+.section-title {
+    color: rgb(139, 0, 0);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+    border-bottom: 2px solid rgb(139, 0, 0);
+    padding-bottom: 10px;
+}
+
+/* Menu Items */
+.item {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.item h3 {
+    color: rgb(51, 51, 51);
+    margin-bottom: 5px;
+}
+
+.item p {
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+}
+
+.price {
+    display: block;
+    color: rgb(139, 0, 0);
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+/* About Section */
+.about {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: white;
+    margin: 20px;
+}
+
+.about h2 {
+    color: rgb(139, 0, 0);
+    margin-bottom: 10px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: rgb(139, 0, 0);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-container {
+        width: calc(100% - 20px);
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .menu-section {
+        padding: 15px;
+    }
+}
+
+
+css introduction project
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#introduction">Introduction</a>
+        <a href="#css-syntax">CSS Syntax</a>
+        <a href="#css-properties">CSS Properties</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="card">
+
+            <h2 class="heading">Introduction to CSS</h2>
+
+            <p>
+                CSS stands for Cascading Style Sheets. It is a stylesheet
+                language used to describe the presentation and design of
+                HTML documents. CSS controls the colors, fonts, spacing,
+                layouts, and overall appearance of a webpage.
+            </p>
+
+            <h3 class="subheading" id="css-syntax">CSS Syntax</h3>
+
+            <p>
+                CSS syntax consists of a selector and a declaration block.
+                The declaration block contains property and value pairs.
+            </p>
+
+            <div class="code-block">
+                <pre>
+body {
+    background-color: lightblue;
+    font-size: 16px;
+    color: black;
+}
+                </pre>
+            </div>
+
+            <h3 class="subheading" id="css-properties">CSS Properties</h3>
+
+            <p>
+                CSS properties define how HTML elements are displayed.
+                The color property is used to change the text color,
+                while the font-size property controls the size of the text.
+                These properties help make webpages attractive and readable.
+            </p>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Introduction to CSS. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+style.css
+
+
+/* Universal Selector */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    background-color: rgb(52, 73, 94);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: rgb(44, 62, 80);
+    padding: 20px;
+    text-align: center;
+}
+
+.navbar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    background-color: rgb(52, 73, 94);
+    border-radius: 5px;
+}
+
+/* Main Content */
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+/* Content Card */
+.card {
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Heading */
+.heading {
+    color: rgb(192, 57, 43);
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Subheadings */
+.subheading {
+    color: rgb(41, 128, 185);
+    font-size: 22px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Paragraph Styling */
+.card p {
+    color: rgb(51, 51, 51);
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Code Block */
+.code-block {
+    background-color: rgb(236, 240, 241);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    font-family: monospace;
+    font-size: 15px;
+    color: rgb(44, 62, 80);
+}
+
+/* Footer */
+.footer {
+    background-color: rgb(44, 62, 80);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .navbar a {
+        display: block;
+        padding: 10px;
+    }
+
+    main {
+        width: calc(100% - 30px);
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .heading {
+        font-size: 24px;
+    }
+
+    .subheading {
+        font-size: 20px;
+    }
+}
+
+

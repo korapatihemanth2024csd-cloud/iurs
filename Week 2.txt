@@ -1,0 +1,585 @@
+ravi his manager Priya
+
+<html>
+<head>
+    <title>Top Tourist Destinations</title>
+</head>
+<body>
+    <h1>Top Tourist Destinations</h1>
+    <ol>
+        <li>
+            <h2>Paris</h2>
+            <ul>
+                <li><b>Description:</b> Known for the romantic ambiane and iconic landmarks like the Eiffel Tower.</li>
+                <li><img src=paris.jpg alt="Paris" width="300"></li>
+            </ul>
+        </li>
+
+        <li>
+            <h2>New York</h2>
+            <ul>
+                <li><b>Description:</b> Known for the Statue of Liberty, Times Square, and Central Park.</li>
+                <li><img src=new-york.jpg alt="New York City" width="300"></li>
+            </ul>
+        </li>
+
+        <li>
+            <h2>Tokyo</h2>
+            <ul>
+                <li><b>Description:</b> A blend of modern skyscrapers and traditional temples, with vibrant districts like Shibuya .</li>
+                <li><img src=tokyo.jpg alt="Tokyo" width="300"></li>
+            </ul>
+        </li>
+
+        <li>
+            <h2>Rome</h2>
+            <ul>
+                <li><b>Description:</b> Known for its ancient history, including landmarks like the Colosseum and Vatican City.</li>
+                <li><img src=rome.jpg alt="Rome" width="300"></li>
+            </ul>
+        </li>
+
+        <li>
+            <h2>London</h2>
+            <ul>
+                <li><b>Description:</b> Famous for its rich history, the Tower of London, Buckingham Palace, and the London Eye.</li>
+                <li><img src=london.jpg alt="London" width="300"></li>
+            </ul>
+        </li>
+    </ol>
+</body>
+</html>
+
+luxury stays
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Stays - Book Your Dream Room</title>
+    <meta name="description" content="Luxury Stays offers the finest rooms and amenities.">
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Luxury Stays</h1>
+        <h3>Your Dream Stay Awaits</h3>
+        <img src="logo.png" alt="Luxury Stays Logo" width="100" height="100">
+        <nav>
+            <ul>
+                <li><a href="#about">About the Hotel</a></li>
+                <li><a href="#rooms">Rooms and Pricing</a></li>
+                <li><a href="#services">Hotel Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#special-offers">Special Offers</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About the Hotel</h2>
+        <p>Luxury Stays offers the finest hospitality with exceptional service, comfortable rooms, and world-class amenities.
+        <strong>Best stay ever</strong> 
+    </section>
+
+    <section id="rooms">
+        <h2>Rooms and Pricing</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Room Type</th>
+                    <th>Price per Night</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <body>
+                <tr>
+                    <td>Single Room</td>
+                    <td>200</td>
+                    <td>A comfortable room with a single bed and basic amenities.</td>
+                </tr>
+                <tr>
+                    <td>Double Room<td>
+                    <td>$150<td>
+                    <td>A spacious room with a king-size bed and a beautiful view.
+                </tr>
+                <tr>
+                    <td>Suite<td>
+                    <td>$250<td>
+                    <td>A luxurious suite with a living area, jacuzzi, and premium amenities.</td>
+                </tr>
+                <tr>
+                    <td>Presidential Suite</td>
+                    <td>$500</td>
+                    <td>An extravagant suite with multiple rooms, a private balcony, and butler service.</td>
+                </tr>
+            </tbody>
+        <table>
+    </section>
+
+    <section id=services>
+        <h2>Hotel Services</h2>
+        <ul>
+            <li>Free Wi-Fi</li>
+            <li>24/7 Room Service</li>
+            <li>Swimming Pool</li>
+            <li>Gym</li>
+            <li>Airport Shuttle</li>
+            <li>Exclusive Spa 
+        </ul>
+    </section>
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <img src="room1.jpg" alt="Room 1" width="300" height="200">
+        <img src="room2.jpg" alt="Room 2" width="300" height="200">
+        <img src="pool.jpg" alt="Hotel Pool" width="300" height="200">
+        <img src="undefined.jpg" alt="Undefined" width="300"> <!-
+
+arjun e commerce company
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+</head>
+<body>
+
+    <h1>Welcome to Our Product Catalog</h1>
+
+    <p>
+        Welcome to our product catalog! This catalog contains a selection
+        of the latest and most popular products available.
+        Explore our products and find the best options for your needs.
+    </p>
+
+    <h2>Our Products</h2>
+
+    <ul>
+        <li>Electronics</li>
+        <li>Accessories</li>
+        <li>Home Appliances</li>
+    </ul>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Laptop</td>
+                <td>$1200</td>
+                <td>A high-performance laptop</td>
+            </tr>
+
+            <tr>
+                <td>Smartphone</td>
+                <td>$800</td>
+                <td>A latest smartphone with advanced features</td>
+            </tr>
+
+            <tr>
+                <td>Headphones</td>
+                <td>$150</td>
+                <td>High-quality wireless headphones</td>
+            </tr>
+
+            <tr>
+                <td>Smartwatch</td>
+                <td>$250</td>
+                <td>A smartwatch with fitness tracking features</td>
+            </tr>
+
+            <tr>
+                <td>Tablet</td>
+                <td>$500</td>
+                <td>A portable tablet with a high-resolution display</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+chandhru e commerce 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Product Catalog</title>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to Our E-Commerce Store</h1>
+        <p>
+            Welcome to our online store! We offer a wide range of
+            high-quality products across electronics, clothing,
+            and home appliances at affordable prices.
+        </p>
+    </header>
+
+    <!-- Product Categories Section -->
+    <section>
+        <h2>Product Categories</h2>
+        <ul>
+            <li>Electronics</li>
+            <li>Clothing</li>
+            <li>Home Appliances</li>
+        </ul>
+    </section>
+
+    <!-- Product Catalog Section -->
+    <section>
+        <h2>Product Catalog</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Laptop</td>
+                    <td>$1200</td>
+                    <td>A high-performance laptop</td>
+                    <td>
+                        <img src="https://placehold.co/150x100?text=Laptop"
+                             alt="Laptop" width="100">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Smartphone</td>
+                    <td>$800</td>
+                    <td>A modern smartphone with advanced features</td>
+                    <td>
+                        <img src="https://placehold.co/150x100?text=Smartphone"
+                             alt="Smartphone" width="100">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Headphones</td>
+                    <td>$150</td>
+                    <td>High-quality wireless headphones</td>
+                    <td>
+                        <img src="https://placehold.co/150x100?text=Headphones"
+                             alt="Headphones" width="100">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Smartwatch</td>
+                    <td>$250</td>
+                    <td>A smartwatch with fitness tracking features</td>
+                    <td>
+                        <img src="https://placehold.co/150x100?text=Smartwatch"
+                             alt="Smartwatch" width="100">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Home Appliances</td>
+                    <td>$500</td>
+                    <td>Quality appliances for your home</td>
+                    <td>
+                        <img src="https://placehold.co/150x100?text=Appliances"
+                             alt="Home Appliances" width="100">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Best-Selling Products Section -->
+    <section>
+        <h2>Best-Selling Products</h2>
+
+        <article>
+            <h3>Laptop</h3>
+            <img src="https://placehold.co/200x150?text=Laptop"
+                 alt="Laptop" width="150">
+            <p>
+                A high-performance laptop designed for work,
+                gaming, and everyday tasks.
+            </p>
+            <ul>
+                <li>High-speed processor</li>
+                <li>Long-lasting battery</li>
+                <li>High-resolution display</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Smartphone</h3>
+            <img src="https://placehold.co/200x150?text=Smartphone"
+                 alt="Smartphone" width="150">
+            <p>
+                A modern smartphone offering excellent performance
+                and an amazing user experience.
+            </p>
+            <ul>
+                <li>High-quality camera</li>
+                <li>Fast processor</li>
+                <li>Long battery life</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Smartwatch</h3>
+            <img src="https://placehold.co/200x150?text=Smartwatch"
+                 alt="Smartwatch" width="150">
+            <p>
+                A stylish smartwatch that helps you track your
+                fitness activities and stay connected.
+            </p>
+            <ul>
+                <li>Fitness tracking</li>
+                <li>Heart rate monitoring</li>
+                <li>Smart notifications</li>
+            </ul>
+        </article>
+    </section>
+
+    <!-- Special Offers Sidebar -->
+    <aside>
+        <h2>Special Offers</h2>
+        <ul>
+            <li>50% off on selected electronics</li>
+            <li>Buy 1, Get 1 Free on accessories</li>
+            <li>Seasonal sale: Up to 40% off on home appliances</li>
+        </ul>
+    </aside>
+
+    <!-- Customer Testimonials Section -->
+    <section>
+        <h2>Customer Testimonials</h2>
+
+        <blockquote>
+            <p>
+                "I am thrilled with my new laptop from this store.
+                The quality and performance are excellent!"
+            </p>
+            <cite>John Doe</cite>
+        </blockquote>
+
+        <blockquote>
+            <p>
+                "The smartphone I bought exceeded my expectations.
+                I am very happy with my purchase!"
+            </p>
+            <cite>Jane Smith</cite>
+        </blockquote>
+
+        <blockquote>
+            <p>
+                "The smartwatch I purchased is exactly what I needed.
+                It has made tracking my fitness much easier!"
+            </p>
+            <cite>Mark Johnson</cite>
+        </blockquote>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>
+            Contact us at
+            <a href="mailto:info@ecommerce.com">info@ecommerce.com</a>
+        </p>
+
+        <p>2025 E-Commerce Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+tech innovators 2025
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Innovators 2025 - Event Page</title>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Tech Innovators 2025</h1>
+        <h2>Innovating the Future of Technology</h2>
+        <img src="https://placehold.co/200x100?text=Tech+Innovators+2025"
+             alt="Tech Innovators 2025 Event Logo" width="200">
+    </header>
+
+    <!-- About the Event Section -->
+    <section>
+        <h2>About the Event</h2>
+        <p>
+            Tech Innovators 2025 is a gathering of the brightest minds
+            in technology to discuss the latest trends and innovations.
+            Join industry leaders, developers, and entrepreneurs to
+            explore the future of technology.
+        </p>
+    </section>
+
+    <!-- Event Schedule Section -->
+    <section>
+        <h2>Event Schedule</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Session Time</th>
+                    <th>Speaker</th>
+                    <th>Topic</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>09:00 AM - 10:00 AM</td>
+                    <td>John Smith</td>
+                    <td>Artificial Intelligence</td>
+                </tr>
+
+                <tr>
+                    <td>10:00 AM - 11:00 AM</td>
+                    <td>Sarah Johnson</td>
+                    <td>Cloud Computing</td>
+                </tr>
+
+                <tr>
+                    <td>11:00 AM - 12:00 PM</td>
+                    <td>Michael Brown</td>
+                    <td>Blockchain Technology</td>
+                </tr>
+
+                <tr>
+                    <td>01:00 PM - 02:00 PM</td>
+                    <td>John Smith</td>
+                    <td>Machine Learning</td>
+                </tr>
+
+                <tr>
+                    <td>02:00 PM - 03:00 PM</td>
+                    <td>Sarah Johnson</td>
+                    <td>Future of Technology</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Speakers Section -->
+    <section>
+        <h2>Speakers</h2>
+
+        <article>
+            <h3>John Smith</h3>
+            <img src="https://placehold.co/150x150?text=John+Smith"
+                 alt="John Smith Speaker" width="150">
+            <p>
+                John Smith is a technology expert specializing in
+                Artificial Intelligence and Machine Learning.
+                He has extensive experience in developing innovative
+                technology solutions.
+            </p>
+        </article>
+
+        <article>
+            <h3>Sarah Johnson</h3>
+            <img src="https://placehold.co/150x150?text=Sarah+Johnson"
+                 alt="Sarah Johnson Speaker" width="150">
+            <p>
+                Sarah Johnson is a cloud computing specialist who
+                works on modern cloud technologies and digital
+                transformation.
+            </p>
+        </article>
+
+        <article>
+            <h3>Michael Brown</h3>
+            <img src="https://placehold.co/150x150?text=Michael+Brown"
+                 alt="Michael Brown Speaker" width="150">
+            <p>
+                Michael Brown is a blockchain technology expert
+                passionate about cybersecurity and innovative
+                digital solutions.
+            </p>
+        </article>
+    </section>
+
+    <!-- Venue Section -->
+    <section>
+        <h2>Venue</h2>
+        <p>
+            The event will be held at the Grand Tech Conference Center,
+            located in downtown Silicon Valley.
+        </p>
+
+        <img src="https://placehold.co/500x250?text=Grand+Tech+Conference+Center"
+             alt="Grand Tech Conference Center Venue" width="400">
+    </section>
+
+    <!-- Sponsors Sidebar -->
+    <aside>
+        <h3>Our Sponsors</h3>
+        <ul>
+            <li>Google</li>
+            <li>Microsoft</li>
+            <li>Amazon</li>
+        </ul>
+
+        <p>
+            Our sponsors play an important role in making
+            Tech Innovators 2025 a successful event.
+        </p>
+    </aside>
+
+    <!-- Registration Section -->
+    <section>
+        <h2>Register Now</h2>
+
+        <ul>
+            <li>Standard Pass - $100</li>
+            <li>VIP Pass - $250</li>
+            <li>Student Pass - $50</li>
+        </ul>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <h2>Contact Us</h2>
+
+        <p>
+            For more information, please contact us at:
+            info@techinnovators2025.com.
+        </p>
+
+        <p>
+            Copyrights, 2025 Tech Innovators 2025. All rights reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,201 @@
+streamflix 
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StramFlix - Watch Movies Online</title>
+</head>
+<body>
+
+    <h2>Welcome to StreamFlix</h2>
+    <h3>Your favorite movies, anytime, anywhere.</h3>
+    
+    <p>StreamFlix is the best platform to watch the latest movies, tv shows</p>
+    
+    <h3>Our Top Picks for You</h3>
+    <p><span>Action<span>, <span>Comedy</span>, <span>Drama</span>, <span>Thriller</span></p>
+
+    <footer>
+        <div>Contact us at <u><i>info@streamflix.com</i></u></div>
+    </footer>
+
+    <div>
+        <h4>This should be placed above the main content but is below instead.</h4>
+    </div>
+
+    <footer> 
+        <p>Another footer paragraph</p>
+    </footer>
+</body>
+</html>
+
+
+tech shop online
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Shop Online</title>
+</head>
+<body>
+
+    <h1>Tech Shop Online</h1>
+
+    <h2>Our Mission</h2>
+    <p>Our mission is to provide affordable, high-quality electronics to customers around the world.</p>
+
+    <h3>Contact Information</h3>
+    <p>We are committed to providing excellent customer service. Reach us at contact@techshop.com or call 1-800-123-4567.</p>
+
+    <h2>Why Choose Us?</h2>
+    <p>Tech Shop Online offers high-quality electronic products at affordable prices. We focus on customer satisfaction, reliable products, and excellent customer support.</p>
+
+    <p>We offer a range of premium laptops, including the latest models with high-speed processors and long-lasting batteries.</p>
+
+    <footer>
+        <p>2025 Tech Shop Online. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+tech conference 25
+index html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Conference 2025</title>
+</head>
+<body>
+
+    <header>
+        <h1>Tech Conference 2025</h1>
+        <h3><b><em>Innovating the Future of Technology</em></b></h3>
+    </header>
+
+    <h1>Tech Conference 2025</h1>
+
+    <h2>Conference Introduction</h2>
+    <p>
+        Welcome to an <b>exciting</b> and <b>innovative</b> conference
+        focused on the latest developments in <i>technology</i>.
+        Join us to explore new ideas and future innovations.
+    </p>
+
+    <h3>Event Details</h3>
+    <p>
+        The conference brings together <strong>global speakers</strong>
+        and provides excellent <em>networking opportunities</em>
+        for technology enthusiasts and professionals.
+    </p>
+
+    <h2>Schedule</h2>
+
+    <h3>Day 1</h3>
+    <h4>Artificial Intelligence in 2025</h4>
+    <p>
+        Explore the latest advancements in Artificial Intelligence.
+        <span>Duration: 2 Hours</span>
+    </p>
+
+    <h4>Machine Learning Innovations</h4>
+    <p>
+        Learn about modern machine learning techniques and applications.
+        <span>Duration: 1 Hour</span>
+    </p>
+
+    <h3>Day 2</h3>
+    <h4>Blockchain Revolution</h4>
+    <p>
+        Discover how blockchain technology is transforming industries.
+        <span>Duration: 2 Hours</span>
+    </p>
+
+    <h4>Cloud Computing and Future Technologies</h4>
+    <p>
+        Understand the future of cloud computing and digital solutions.
+        <span>Duration: 1 Hour</span>
+    </p>
+
+    <h2>Speakers</h2>
+
+    <h5>John Smith</h5>
+    <p>
+        <span>Senior AI Researcher, Google</span>
+        <b>Expert in Artificial Intelligence</b> and
+        <i>Machine Learning</i>.
+    </p>
+
+    <h5>Sarah Johnson</h5>
+    <p>
+        <span>Blockchain Specialist, Microsoft</span>
+        <b>Expert in Blockchain Technology</b> and
+        <i>Digital Innovation</i>.
+    </p>
+
+    <h5>David Williams</h5>
+    <p>
+        <span>Cloud Architect, Amazon</span>
+        <b>Expert in Cloud Computing</b> and
+        <i>Cloud Infrastructure</i>.
+    </p>
+
+    <footer>
+        <h6>Contact Us</h6>
+        <p>
+            Email: <u>contact@techconference.com</u>
+            <br>
+            Website: <span>www.techconference.com</span>
+            <br>
+            Phone: 1-800-123-4567
+        </p>
+    </footer>
+
+</body>
+</html>
+
+the reading nook
+ index html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Reading Nook - Your Favorite Bookstore</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to The Reading Nook</h1>
+        <h3><b><em>Where every book has a story</em></b></h3>
+    </header>
+    <h2>Our Mission</h2>
+    <p>At The Reading Nook, we are dedicated to providing<b>quality books</b>and <i><u>literature</u></i>to all readers.</p>
+    <h3>New Arrivals</h3>
+    <p><i>The Silent Sea</i> - A must-read for all fans of<u>mystery</u> and<u>Adventure</u>.</p>
+    <h4>Book Details</h4>
+    <p>
+        <strong>Price:$19.99</strong><br><span>Publication Date:January 2025</span>
+    </p>
+    <h2>Customer Reviews</h2>
+    <h3>Review 1</h3>
+    <p>
+        <span><b>Jane Doe</b></span><br>
+        Rating:5/5. One of the best books I've read this year. 
+        Highly recommend <u>mystery</u> genre lovers to try it.
+    </p>
+    <footer>
+        <h6>Contact Us</h6>
+        <p>Email:<u>info@readingnook.com</u>|Phone:<span>123-456-7890</span></p>
+    </footer>
+    <h2>Why Choose Us?</h2>
+    <p>We offer a <strong>wide selection</strong>of books at<em>affordable prices</em>.</p>
+</body>
+</html>
