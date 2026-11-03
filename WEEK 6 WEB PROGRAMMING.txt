@@ -1,0 +1,482 @@
+WEEK 6 :
+1.RITHIKA Highlight" button
+ html :    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Feature</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <p id="textPara">This is sample text to demonstrate dynamic paragraph highlighting.</p>
+        <button id="highlightBtn" class="btn btn-warning">Highlight</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+Script js :    document.addEventListener("DOMContentLoaded", function () {
+    const highlightBtn = document.getElementById("highlightBtn");
+    const textPara = document.getElementById("textPara");
+
+    if (highlightBtn && textPara) {
+        highlightBtn.addEventListener("click", function () {
+            textPara.classList.toggle("highlight");
+        });
+    }
+});
+Css:   .highlight {
+    background-color: yellow;
+}
+ 
+
+2. SOHALI layered image display
+ Html :    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layered Image Display</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container my-4 text-center">
+    <!-- Control Buttons -->
+    <div class="mb-4 d-flex justify-content-center gap-3">
+      <button id="btn1" class="btn btn-primary">Image 1</button>
+      <button id="btn2" class="btn btn-secondary">Image 2</button>
+      <button id="btn3" class="btn btn-success">Image 3</button>
+    </div>
+
+    <!-- Image Display Container -->
+    <div class="image-container mx-auto">
+      <img id="img1" class="layered-img" src="img1.jpg" alt="Image 1">
+      <img id="img2" class="layered-img" src="img2.jpg" alt="Image 2">
+      <img id="img3" class="layered-img" src="img3.jpg" alt="Image 3">
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+Script js: document.addEventListener('DOMContentLoaded', () => {
+    const btn1 = document.getElementById('btn1');
+    const btn2 = document.getElementById('btn2');
+    const btn3 = document.getElementById('btn3');  
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+    const img3 = document.getElementById('img3');
+    function bringToFront(selectedImg) {
+      // Reset all images z-index to 1
+      img1.style.zIndex = '1';
+      img2.style.zIndex = '1';
+      img3.style.zIndex = '1';
+      // Set selected image z-index to 10
+      selectedImg.style.zIndex = '10';
+    }
+    btn1.addEventListener('click', () => bringToFront(img1));
+    btn2.addEventListener('click', () => bringToFront(img2));
+    btn3.addEventListener('click', () => bringToFront(img3));
+  });
+Css :    /* write you stylings here */.image-container {
+  position: relative;
+  width: 400px;
+  height: 300px;
+}
+.layered-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* Initial z-index values */
+#img1 {
+  z-index: 1;
+}
+#img2 {
+  z-index: 2;
+}
+#img3 {
+  z-index: 3;
+}
+
+
+3. REKHA live text editor
+Html :<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Text Editor</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4">
+  <div class="container">
+    <h2 class="mb-4">Live Text Editor</h2>
+
+    <!-- Control Panel -->
+    <div class="row g-3 align-items-center mb-3">
+      <!-- Font Size Dropdown -->
+      <div class="col-auto">
+        <label for="fontSizeSelect" class="form-label mb-0">Font Size:</label>
+        <select id="fontSizeSelect" class="form-select">
+          <option value="12px" selected>12px</option>
+          <option value="16px">16px</option>
+          <option value="20px">20px</option>
+        </select>
+      </div>
+
+      <!-- Font Color Dropdown -->
+      <div class="col-auto">
+        <label for="fontColorSelect" class="form-label mb-0">Font Color:</label>
+        <select id="fontColorSelect" class="form-select">
+          <option value="black" selected>Black</option>
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
+        </select>
+      </div>
+
+      <!-- Button Group -->
+      <div class="col-auto pt-4">
+        <div class="btn-group" role="group">
+          <button id="boldBtn" class="btn btn-outline-dark" type="button">Bold</button>
+          <button id="italicBtn" class="btn btn-outline-dark" type="button">Italic</button>
+          <button id="resetBtn" class="btn btn-outline-secondary" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Textarea -->
+    <div class="mb-3">
+      <textarea id="editor" class="form-control" rows="10" placeholder="Type your text here..." style="font-size: 12px; color: black; font-weight: normal; font-style: normal;"></textarea>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+Script js:    document.addEventListener('DOMContentLoaded', () => {
+    const editor = document.getElementById('editor');
+    const fontSizeSelect = document.getElementById('fontSizeSelect');
+    const fontColorSelect = document.getElementById('fontColorSelect');
+    const boldBtn = document.getElementById('boldBtn');
+    const italicBtn = document.getElementById('italicBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    // Enforce initial inline styles directly on initialization
+    editor.style.fontSize = '12px';
+    editor.style.color = 'black';
+    editor.style.fontWeight = 'normal';
+    editor.style.fontStyle = 'normal';
+  
+    // 1. Font Size Change
+    fontSizeSelect.addEventListener('change', (e) => {
+      editor.style.fontSize = e.target.value;
+    });
+  
+    // 2. Font Color Change
+    fontColorSelect.addEventListener('change', (e) => {
+      editor.style.color = e.target.value;
+    });
+  
+    // 3. Bold Toggle
+    boldBtn.addEventListener('click', () => {
+      boldBtn.classList.toggle('active');
+      if (editor.style.fontWeight === 'bold') {
+        editor.style.fontWeight = 'normal';
+      } else {
+        editor.style.fontWeight = 'bold';
+      }
+    });
+  
+    // 4. Italic Toggle
+    italicBtn.addEventListener('click', () => {
+      italicBtn.classList.toggle('active');
+      if (editor.style.fontStyle === 'italic') {
+        editor.style.fontStyle = 'normal';
+      } else {
+        editor.style.fontStyle = 'italic';
+      }
+    });
+  
+    // 5. Reset Action
+    resetBtn.addEventListener('click', () => {
+      editor.style.fontSize = '12px';
+      editor.style.color = 'black';
+      editor.style.fontWeight = 'normal';
+      editor.style.fontStyle = 'normal';
+  
+      fontSizeSelect.value = '12px';
+      fontColorSelect.value = 'black';
+      boldBtn.classList.remove('active');
+      italicBtn.classList.remove('active');
+    });
+  });
+Css: #editor {
+    font-size: 12px;
+    color: black;
+    font-weight: normal;
+    font-style: normal;
+    resize: vertical;
+  }
+  .btn-outline-dark.active {
+    background-color: #212529;
+    color: #ffffff;
+  }
+
+4. ASHOK user information form
+Html :  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Information Form</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4">
+
+  <div class="container style-container">
+    <h2 class="mb-4">User Information Form</h2>
+
+    <form id="userForm" novalidate>
+      <!-- Name Input -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required>
+        <div class="invalid-feedback" id="nameError">
+          Please enter your name.
+        </div>
+      </div>
+
+      <!-- Email Input -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" required>
+        <div class="invalid-feedback" id="emailError">
+          Please enter a valid email address ending in .com (e.g., user@domain.com).
+        </div>
+      </div>
+
+      <!-- Age Input -->
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" id="age" required>
+        <div class="invalid-feedback" id="ageError">
+          Age must be between 18 and 120.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+    </form>
+
+    <!-- Success Message Container -->
+    <div id="successMessage" class="alert alert-success mt-4 d-none" role="alert">
+      <strong>Success!</strong> Form submitted with data:
+      <div id="successData" class="mt-2"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+Script js: document.addEventListener('DOMContentLoaded', () => {
+  const userForm = document.getElementById('userForm');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const ageInput = document.getElementById('age');
+
+  const nameError = document.getElementById('nameError');
+  const emailError = document.getElementById('emailError');
+  const ageError = document.getElementById('ageError');
+
+  const successMessage = document.getElementById('successMessage');
+  const successData = document.getElementById('successData');
+
+  userForm.addEventListener('submit', (event) => {
+    // Prevent default form re-submission / reload
+    event.preventDefault();
+
+    // Clear previous error/success states
+    nameInput.classList.remove('is-invalid');
+    emailInput.classList.remove('is-invalid');
+    ageInput.classList.remove('is-invalid');
+    successMessage.classList.add('d-none');
+
+    const nameValue = nameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const ageValue = parseInt(ageInput.value, 10);
+
+    let isValid = true;
+
+    // 1. Validate Name
+    if (nameValue === '') {
+      nameInput.classList.add('is-invalid');
+      isValid = false;
+    }
+    // 2. Validate Email (Must have a valid domain ending in .com)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$/;
+    if (!emailRegex.test(emailValue)) {
+     emailInput.classList.add('is-invalid');
+    isValid = false;
+    }
+
+    // 3. Validate Age (Between 18 and 120)
+    if (isNaN(ageValue) || ageValue < 18 || ageValue > 120) {
+      ageInput.classList.add('is-invalid');
+      isValid = false;
+    }
+
+    // If all inputs pass validation
+    if (isValid) {
+      // Show data in success container
+      successData.textContent = `Name: ${nameValue}, Email: ${emailValue}, Age: ${ageValue}`;
+      successMessage.classList.remove('d-none');
+
+      // Reset form input fields
+      userForm.reset();
+    }
+  });
+});
+
+
+
+
+Css:  /* Center form and restrict max-width */
+.style-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Ensure Bootstrap invalid-feedback displays properly when element has 'is-invalid' class */
+.form-control.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+5. SURESHkids' sketch pad
+Html :  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids' Sketch Pad</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light p-4">
+    <div class="container text-center">
+        <h1 class="mb-4">Kids' Sketch Pad</h1>
+        <div class="d-flex justify-content-center mb-3">
+            <canvas id="sketchPad" width="500" height="300"></canvas>
+        </div>
+        <div class="mb-3">
+            <button id="redBtn" class="btn btn-danger me-2">Red</button>
+            <button id="blueBtn" class="btn btn-primary me-2">Blue</button>
+            <button id="greenBtn" class="btn btn-success me-2">Green</button>
+            <button id="eraserBtn" class="btn btn-secondary me-2">Eraser</button>
+            <button id="clearBtn" class="btn btn-warning">Clear Canvas</button>
+        </div>
+        <div class="fw-bold fs-5">Current Color: <span id="currentColor">Black</span><span id="currentColorDisplay" style="display:none;">Black</span></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+ CSS:  #sketchPad {
+  border: 2px solid #000;
+  background-color: #ffffff;
+  cursor: crosshair;
+  display: block;
+  touch-action: none;
+} 
+Script js:   const canvas = document.getElementById("sketchPad");
+const ctx = canvas.getContext("2d");
+
+const redBtn = document.getElementById("redBtn");
+const blueBtn = document.getElementById("blueBtn");
+const greenBtn = document.getElementById("greenBtn");
+const eraserBtn = document.getElementById("eraserBtn");
+const clearBtn = document.getElementById("clearBtn");
+const currentColor = document.getElementById("currentColor");
+const currentColorDisplay = document.getElementById("currentColorDisplay");
+
+function resetCanvasBackground() {
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+resetCanvasBackground();
+
+ctx.strokeStyle = "#000000";
+ctx.lineWidth = 5;
+ctx.lineCap = "round";
+
+let isDrawing = false;
+
+function setDrawingColor(displayText, hexColor) {
+    ctx.strokeStyle = hexColor;
+    if (currentColor) {
+        currentColor.textContent = displayText;
+    }
+    if (currentColorDisplay) {
+        currentColorDisplay.textContent = displayText;
+    }
+}
+
+function getCanvasCoordinates(e) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
+}
+
+canvas.addEventListener("mousedown", (e) => {
+    isDrawing = true;
+    const coords = getCanvasCoordinates(e);
+    ctx.beginPath();
+    ctx.moveTo(coords.x, coords.y);
+});
+
+canvas.addEventListener("mousemove", (e) => {
+    if (!isDrawing) return;
+    const coords = getCanvasCoordinates(e);
+    ctx.lineTo(coords.x, coords.y);
+    ctx.stroke();
+});
+
+canvas.addEventListener("mouseup", () => {
+    isDrawing = false;
+    ctx.beginPath();
+});
+
+canvas.addEventListener("mouseout", () => {
+    isDrawing = false;
+    ctx.beginPath();
+});
+
+redBtn.addEventListener("click", () => setDrawingColor("Red", "#ff0000"));
+blueBtn.addEventListener("click", () => setDrawingColor("Blue", "#0000ff"));
+greenBtn.addEventListener("click", () => setDrawingColor("Green", "#008000"));
+eraserBtn.addEventListener("click", () => setDrawingColor("White", "#ffffff"));
+
+clearBtn.addEventListener("click", () => {
+    resetCanvasBackground();
+});
+ 
+
+
